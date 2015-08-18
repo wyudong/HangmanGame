@@ -15,6 +15,7 @@
 		BF3C057B1B836E8C0059AAD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF3C057A1B836E8C0059AAD7 /* Images.xcassets */; };
 		BF3C057E1B836E8C0059AAD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF3C057C1B836E8C0059AAD7 /* LaunchScreen.xib */; };
 		BF3C058A1B836E8D0059AAD7 /* HangmanGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C05891B836E8D0059AAD7 /* HangmanGameTests.m */; };
+		BF964CAF1B8384D600124756 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF964CAE1B8384D600124756 /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		BF3C05831B836E8D0059AAD7 /* HangmanGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HangmanGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3C05881B836E8D0059AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3C05891B836E8D0059AAD7 /* HangmanGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HangmanGameTests.m; sourceTree = "<group>"; };
+		BF964CAE1B8384D600124756 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF964CAF1B8384D600124756 /* CoreText.framework in Frameworks */,
 				78A7BF9A9AD7ABEA90ABD3B9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +80,7 @@
 		29B4DE3B43CBF001482B636C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF964CAE1B8384D600124756 /* CoreText.framework */,
 				20B8096C288F4E1D2FFAC6D0 /* libPods.a */,
 			);
 			name = Frameworks;
