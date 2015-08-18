@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78A7BF9A9AD7ABEA90ABD3B9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B8096C288F4E1D2FFAC6D0 /* libPods.a */; };
 		BF3C05701B836E8C0059AAD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C056F1B836E8C0059AAD7 /* main.m */; };
 		BF3C05731B836E8C0059AAD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C05721B836E8C0059AAD7 /* AppDelegate.m */; };
 		BF3C05761B836E8C0059AAD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C05751B836E8C0059AAD7 /* ViewController.m */; };
@@ -27,6 +28,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00E6C58E1941B6A6BA8342C4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		20B8096C288F4E1D2FFAC6D0 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B818E8B6A2AC57A6D8EB4283 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		BF3C056A1B836E8C0059AAD7 /* HangmanGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HangmanGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF3C056E1B836E8C0059AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3C056F1B836E8C0059AAD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -47,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78A7BF9A9AD7ABEA90ABD3B9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,12 +65,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2998F36885AB528ADBEBD1FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B818E8B6A2AC57A6D8EB4283 /* Pods.debug.xcconfig */,
+				00E6C58E1941B6A6BA8342C4 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		29B4DE3B43CBF001482B636C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20B8096C288F4E1D2FFAC6D0 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF3C05611B836E8C0059AAD7 = {
 			isa = PBXGroup;
 			children = (
 				BF3C056C1B836E8C0059AAD7 /* HangmanGame */,
 				BF3C05861B836E8D0059AAD7 /* HangmanGameTests */,
 				BF3C056B1B836E8C0059AAD7 /* Products */,
+				2998F36885AB528ADBEBD1FB /* Pods */,
+				29B4DE3B43CBF001482B636C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,9 +150,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF3C058D1B836E8D0059AAD7 /* Build configuration list for PBXNativeTarget "HangmanGame" */;
 			buildPhases = (
+				527B2A59E8AA0F851E81C534 /* Check Pods Manifest.lock */,
 				BF3C05661B836E8C0059AAD7 /* Sources */,
 				BF3C05671B836E8C0059AAD7 /* Frameworks */,
 				BF3C05681B836E8C0059AAD7 /* Resources */,
+				39E1879937E132BA17BF2ABD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,6 +239,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		39E1879937E132BA17BF2ABD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		527B2A59E8AA0F851E81C534 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF3C05661B836E8C0059AAD7 /* Sources */ = {
@@ -299,7 +358,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -336,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -345,9 +404,11 @@
 		};
 		BF3C058E1B836E8D0059AAD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B818E8B6A2AC57A6D8EB4283 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HangmanGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -355,9 +416,11 @@
 		};
 		BF3C058F1B836E8D0059AAD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00E6C58E1941B6A6BA8342C4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HangmanGame/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -416,6 +479,7 @@
 				BF3C058F1B836E8D0059AAD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BF3C05901B836E8D0059AAD7 /* Build configuration list for PBXNativeTarget "HangmanGameTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +488,7 @@
 				BF3C05921B836E8D0059AAD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
