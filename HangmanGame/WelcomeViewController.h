@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  WelcomeViewController
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/18.
