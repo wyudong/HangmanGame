@@ -11,6 +11,7 @@
 #import "FUIButton+GameButton.h"
 #import "FUITextField+GameTextField.h"
 #import "MBProgressHUD.h"
+#import "GuessViewController.h"
 
 @interface WelcomeViewController ()
 
@@ -64,7 +65,8 @@
         // Show alert
         if ([message isEqualToString:@"THE GAME IS ON"]) {
             NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
-            [self showStartGameAlertWithTitle:@"Welcome" message:@"Ready for game!"];
+            GuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GuessViewController"];
+            [self presentViewController:vc animated:YES completion:nil];
         } else if ([message isEqualToString:@"Missing player id"]) {
             [self showStartGameAlertWithTitle:@"Oops!" message:@"Please fill your ID first."];
         } else if ([message isEqualToString:@"Player does not exist"]){

@@ -23,6 +23,7 @@
 		BFCE78CE1B84ACD700F0675E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78CD1B84ACD700F0675E /* Foundation.framework */; };
 		BFCE78D01B84ACDE00F0675E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78CF1B84ACDE00F0675E /* UIKit.framework */; };
 		BFCE78D21B84ACE900F0675E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */; };
+		BFCE78D51B84CB2200F0675E /* GuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D41B84CB2200F0675E /* GuessViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		BFCE78CD1B84ACD700F0675E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFCE78CF1B84ACDE00F0675E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BFCE78D31B84CB2200F0675E /* GuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessViewController.h; sourceTree = "<group>"; };
+		BFCE78D41B84CB2200F0675E /* GuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				BF964CB71B846F1300124756 /* RESTfulAPIManager.m */,
 				BF3C05741B836E8C0059AAD7 /* WelcomeViewController.h */,
 				BF3C05751B836E8C0059AAD7 /* WelcomeViewController.m */,
+				BFCE78D31B84CB2200F0675E /* GuessViewController.h */,
+				BFCE78D41B84CB2200F0675E /* GuessViewController.m */,
 				BF3C05771B836E8C0059AAD7 /* Main.storyboard */,
 				BF3C057A1B836E8C0059AAD7 /* Images.xcassets */,
 				BF3C057C1B836E8C0059AAD7 /* LaunchScreen.xib */,
@@ -320,6 +325,7 @@
 				BF3C05701B836E8C0059AAD7 /* main.m in Sources */,
 				BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */,
 				BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */,
+				BFCE78D51B84CB2200F0675E /* GuessViewController.m in Sources */,
 				BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
