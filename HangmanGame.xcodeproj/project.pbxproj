@@ -18,6 +18,7 @@
 		BF964CAF1B8384D600124756 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF964CAE1B8384D600124756 /* CoreText.framework */; };
 		BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB11B8423C200124756 /* FUIButton+GameButton.m */; };
 		BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */; };
+		BF964CB81B846F1300124756 /* RESTfulAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB71B846F1300124756 /* RESTfulAPIManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		BF964CB11B8423C200124756 /* FUIButton+GameButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUIButton+GameButton.m"; sourceTree = "<group>"; };
 		BF964CB31B84484C00124756 /* FUITextField+GameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FUITextField+GameTextField.h"; sourceTree = "<group>"; };
 		BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUITextField+GameTextField.m"; sourceTree = "<group>"; };
+		BF964CB61B846F1300124756 /* RESTfulAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTfulAPIManager.h; sourceTree = "<group>"; };
+		BF964CB71B846F1300124756 /* RESTfulAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTfulAPIManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				BF964CB11B8423C200124756 /* FUIButton+GameButton.m */,
 				BF964CB31B84484C00124756 /* FUITextField+GameTextField.h */,
 				BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */,
+				BF964CB61B846F1300124756 /* RESTfulAPIManager.h */,
+				BF964CB71B846F1300124756 /* RESTfulAPIManager.m */,
 				BF3C05741B836E8C0059AAD7 /* WelcomeViewController.h */,
 				BF3C05751B836E8C0059AAD7 /* WelcomeViewController.m */,
 				BF3C05771B836E8C0059AAD7 /* Main.storyboard */,
@@ -294,6 +299,7 @@
 			files = (
 				BF3C05761B836E8C0059AAD7 /* WelcomeViewController.m in Sources */,
 				BF3C05731B836E8C0059AAD7 /* AppDelegate.m in Sources */,
+				BF964CB81B846F1300124756 /* RESTfulAPIManager.m in Sources */,
 				BF3C05701B836E8C0059AAD7 /* main.m in Sources */,
 				BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */,
 				BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */,

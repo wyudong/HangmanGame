@@ -32,7 +32,7 @@
                                     <constraint firstAttribute="width" secondItem="oR1-aK-cNu" secondAttribute="height" multiplier="6:1" id="wko-oj-7gV"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Player ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UkZ-2R-kM6" customClass="FUITextField">
@@ -76,6 +76,7 @@
                         <outlet property="gameTitle" destination="oR1-aK-cNu" id="6C6-P9-qhe"/>
                         <outlet property="playerIdTextFiled" destination="UkZ-2R-kM6" id="sVI-Mn-YM3"/>
                         <outlet property="startGameButton" destination="PT1-o1-plT" id="16L-ns-SIe"/>
+                        <outlet property="view" destination="kh9-bI-dsS" id="lDY-RE-lV1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

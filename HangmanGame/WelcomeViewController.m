@@ -7,6 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
+#import "RESTfulAPIManager.h"
 #import "FUIButton+GameButton.h"
 #import "FUITextField+GameTextField.h"
 
@@ -43,17 +44,37 @@
 
 - (void)clickStartGameButton:(UIButton *)sender
 {
-    NSLog(@"new game");
+    NSLog(@"click new game");
+    
+    [self dismissKeyboard];
+
+    [[RESTfulAPIManager sharedInstance] startGameWithPlayerId:self.playerIdTextFiled.text
+                                            completionHandler:^(NSString *message, NSError *error) {
+         if ([message isEqualToString:@"THE GAME IS ON"]) {
+             NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
+         } else if ([message isEqualToString:@"Player does not exist"]){
+             NSLog(@"Please check your ID and try again");
+         } else {
+             NSLog(@"There occurs an error when starting the game. Please Try again later.");
+         }
+     }];
 }
 
 - (void)clickContinueGameButton:(UIButton *)sender
 {
-    NSLog(@"continue game");
+    NSLog(@"click continue game");
+
+    [self dismissKeyboard];
+}
+
+- (void)dismissKeyboard
+{
+    [self.playerIdTextFiled resignFirstResponder];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
-    [textField resignFirstResponder];
+    [self dismissKeyboard];
     return NO;
 }
 
