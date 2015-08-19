@@ -20,16 +20,33 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sLi-Dc-1mr" customClass="FUIButton">
-                                <rect key="frame" x="201" y="333" width="198" height="50"/>
+                                <rect key="frame" x="201" y="355.5" width="198" height="66"/>
                                 <state key="normal" title="CONTINUE">
                                     <color key="titleColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PT1-o1-plT" customClass="FUIButton">
-                                <rect key="frame" x="201" y="275" width="198" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hangman Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oR1-aK-cNu">
+                                <rect key="frame" x="75" y="84" width="450" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="PT1-o1-plT" secondAttribute="height" multiplier="99:25" id="Fae-XK-fU3"/>
+                                    <constraint firstAttribute="width" secondItem="oR1-aK-cNu" secondAttribute="height" multiplier="6:1" id="wko-oj-7gV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Player ID" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UkZ-2R-kM6" customClass="FUITextField">
+                                <rect key="frame" x="75" y="180" width="450" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="UkZ-2R-kM6" secondAttribute="height" multiplier="6:1" id="PmZ-12-CCv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PT1-o1-plT" customClass="FUIButton">
+                                <rect key="frame" x="201" y="267" width="198" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="PT1-o1-plT" secondAttribute="height" multiplier="3:1" id="Fae-XK-fU3"/>
                                 </constraints>
                                 <state key="normal" title="NEW GAME">
                                     <color key="titleColor" name="windowFrameTextColor" catalog="System" colorSpace="catalog"/>
@@ -40,16 +57,24 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PT1-o1-plT" firstAttribute="width" secondItem="sLi-Dc-1mr" secondAttribute="width" id="3Bj-gl-Oc1"/>
+                            <constraint firstAttribute="centerX" secondItem="oR1-aK-cNu" secondAttribute="centerX" id="6fZ-Fp-FeH"/>
+                            <constraint firstItem="UkZ-2R-kM6" firstAttribute="leading" secondItem="oR1-aK-cNu" secondAttribute="leading" id="9NA-D9-S8O"/>
                             <constraint firstItem="PT1-o1-plT" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.33" id="Uza-nw-qcn"/>
                             <constraint firstAttribute="centerY" secondItem="PT1-o1-plT" secondAttribute="centerY" id="XlB-xJ-q53"/>
-                            <constraint firstItem="PT1-o1-plT" firstAttribute="width" secondItem="sLi-Dc-1mr" secondAttribute="height" multiplier="99:25" id="a3M-kc-vVd"/>
-                            <constraint firstItem="sLi-Dc-1mr" firstAttribute="top" secondItem="PT1-o1-plT" secondAttribute="bottom" constant="8" symbolic="YES" id="gnM-UT-sbv"/>
+                            <constraint firstItem="oR1-aK-cNu" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="64" id="ZRf-J1-4LL"/>
+                            <constraint firstItem="PT1-o1-plT" firstAttribute="width" secondItem="sLi-Dc-1mr" secondAttribute="height" multiplier="3:1" id="a3M-kc-vVd"/>
+                            <constraint firstItem="oR1-aK-cNu" firstAttribute="width" secondItem="UkZ-2R-kM6" secondAttribute="width" id="ewz-jj-cNR"/>
+                            <constraint firstItem="sLi-Dc-1mr" firstAttribute="top" secondItem="PT1-o1-plT" secondAttribute="bottom" constant="22" id="gnM-UT-sbv"/>
+                            <constraint firstItem="UkZ-2R-kM6" firstAttribute="top" secondItem="oR1-aK-cNu" secondAttribute="bottom" constant="21" id="kRE-4Q-MyA"/>
                             <constraint firstItem="sLi-Dc-1mr" firstAttribute="leading" secondItem="PT1-o1-plT" secondAttribute="leading" id="wIh-H8-Y1l"/>
                             <constraint firstAttribute="centerX" secondItem="PT1-o1-plT" secondAttribute="centerX" id="z6p-6F-3Bt"/>
+                            <constraint firstItem="oR1-aK-cNu" firstAttribute="width" secondItem="kh9-bI-dsS" secondAttribute="width" multiplier="0.75" id="ztA-1D-hEU"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="continueGameButton" destination="sLi-Dc-1mr" id="IkV-jM-wjr"/>
+                        <outlet property="gameTitle" destination="oR1-aK-cNu" id="6C6-P9-qhe"/>
+                        <outlet property="playerIdTextFiled" destination="UkZ-2R-kM6" id="sVI-Mn-YM3"/>
                         <outlet property="startGameButton" destination="PT1-o1-plT" id="16L-ns-SIe"/>
                     </connections>
                 </viewController>

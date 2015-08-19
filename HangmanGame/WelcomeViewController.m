@@ -8,9 +8,12 @@
 
 #import "WelcomeViewController.h"
 #import "FUIButton+GameButton.h"
+#import "FUITextField+GameTextField.h"
 
 @interface WelcomeViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *gameTitle;
+@property (weak, nonatomic) IBOutlet FUITextField *playerIdTextFiled;
 @property (weak, nonatomic) IBOutlet FUIButton *startGameButton;
 @property (weak, nonatomic) IBOutlet FUIButton *continueGameButton;
 
@@ -23,6 +26,12 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorFromHexCode:@"FFF8F2"];
+    
+    self.gameTitle.font = [UIFont flatFontOfSize:24];
+    self.gameTitle.textColor = [UIColor midnightBlueColor];
+    
+    [self.playerIdTextFiled drawTextField];
+    self.playerIdTextFiled.delegate = self;
     
     [self.startGameButton drawButtonWithTypeMenu];
     [self.startGameButton addTarget:self action:@selector(clickStartGameButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -40,6 +49,12 @@
 - (void)clickContinueGameButton:(UIButton *)sender
 {
     NSLog(@"continue game");
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return NO;
 }
 
 @end
