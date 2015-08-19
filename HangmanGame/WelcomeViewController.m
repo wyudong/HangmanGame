@@ -60,7 +60,8 @@
     [[RESTfulAPIManager sharedInstance] startGameWithPlayerId:self.playerIdTextFiled.text
                                             completionHandler:^(NSString *message, NSError *error) {
         [hud hide:YES];
-                                                
+           
+        // Show alert
         if ([message isEqualToString:@"THE GAME IS ON"]) {
             NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
             [self showStartGameAlertWithTitle:@"Welcome" message:@"Ready for game!"];
@@ -108,7 +109,12 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self dismissKeyboard];
-    return NO;
+    return YES;
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 @end
