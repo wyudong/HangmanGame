@@ -7,6 +7,7 @@
 //
 
 #import "GuessViewController.h"
+#import "HangmanHeader.h"
 
 @implementation GuessViewController
 

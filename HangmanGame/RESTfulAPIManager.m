@@ -7,6 +7,7 @@
 //
 
 #import "RESTfulAPIManager.h"
+#import "HangmanHeader.h"
 
 #define URL_HOST @"https://strikingly-hangman.herokuapp.com/game/on"
 
@@ -63,16 +64,16 @@
             NSLog(@"json: %@", jsonDictionary);
            
             if ([jsonDictionary isKindOfClass:[NSDictionary class]]) {
-                self.message = [jsonDictionary objectForKey:@"message"];
-                self.sessionId = [jsonDictionary objectForKey:@"sessionId"];
-                NSDictionary *dataDictionary = [jsonDictionary objectForKey:@"data"];
-                self.numberOfWordsToGuess = [[dataDictionary objectForKey:@"numberOfWordsToGuess"] integerValue];
-                self.numberOfGuessAllowedForEachWord = [[dataDictionary objectForKey:@"numberOfGuessAllowedForEachWord"] integerValue];
+                self.message = [jsonDictionary objectForKey:kMessage];
+                self.sessionId = [jsonDictionary objectForKey:kSessionId];
+                NSDictionary *dataDictionary = [jsonDictionary objectForKey:kData];
+                self.numberOfWordsToGuess = [[dataDictionary objectForKey:kNumberOfWordsToGuess] integerValue];
+                self.numberOfGuessAllowedForEachWord = [[dataDictionary objectForKey:kNumberOfGuessAllowedForEachWord] integerValue];
                 
-                NSLog(@"message: %@",self. message);
-                NSLog(@"sessionId: %@", self.sessionId);
-                NSLog(@"numberOfWordsToGuess: %lu",self. numberOfWordsToGuess);
-                NSLog(@"numberOfGuessAllowedForEachWord: %lu", self.numberOfGuessAllowedForEachWord);
+//                NSLog(@"message: %@",self. message);
+//                NSLog(@"sessionId: %@", self.sessionId);
+//                NSLog(@"numberOfWordsToGuess: %lu",self. numberOfWordsToGuess);
+//                NSLog(@"numberOfGuessAllowedForEachWord: %lu", self.numberOfGuessAllowedForEachWord);
                 
                 if (handler) {
                     handler(self.message, NULL);

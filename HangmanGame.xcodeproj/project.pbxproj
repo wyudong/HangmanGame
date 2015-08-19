@@ -24,6 +24,7 @@
 		BFCE78D01B84ACDE00F0675E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78CF1B84ACDE00F0675E /* UIKit.framework */; };
 		BFCE78D21B84ACE900F0675E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */; };
 		BFCE78D51B84CB2200F0675E /* GuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D41B84CB2200F0675E /* GuessViewController.m */; };
+		BFCE78DA1B84D5AE00F0675E /* HangmanHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D91B84D5AE00F0675E /* HangmanHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,8 @@
 		BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BFCE78D31B84CB2200F0675E /* GuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessViewController.h; sourceTree = "<group>"; };
 		BFCE78D41B84CB2200F0675E /* GuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessViewController.m; sourceTree = "<group>"; };
+		BFCE78D81B84D5AE00F0675E /* HangmanHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangmanHeader.h; sourceTree = "<group>"; };
+		BFCE78D91B84D5AE00F0675E /* HangmanHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangmanHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +141,8 @@
 			children = (
 				BF3C05711B836E8C0059AAD7 /* AppDelegate.h */,
 				BF3C05721B836E8C0059AAD7 /* AppDelegate.m */,
+				BFCE78D81B84D5AE00F0675E /* HangmanHeader.h */,
+				BFCE78D91B84D5AE00F0675E /* HangmanHeader.m */,
 				BF964CB01B8423C200124756 /* FUIButton+GameButton.h */,
 				BF964CB11B8423C200124756 /* FUIButton+GameButton.m */,
 				BF964CB31B84484C00124756 /* FUITextField+GameTextField.h */,
@@ -324,6 +329,7 @@
 				BF964CB81B846F1300124756 /* RESTfulAPIManager.m in Sources */,
 				BF3C05701B836E8C0059AAD7 /* main.m in Sources */,
 				BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */,
+				BFCE78DA1B84D5AE00F0675E /* HangmanHeader.m in Sources */,
 				BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */,
 				BFCE78D51B84CB2200F0675E /* GuessViewController.m in Sources */,
 				BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */,

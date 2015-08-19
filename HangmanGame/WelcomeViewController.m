@@ -7,6 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
+#import "HangmanHeader.h"
 #import "RESTfulAPIManager.h"
 #import "FUIButton+GameButton.h"
 #import "FUITextField+GameTextField.h"
@@ -65,6 +66,7 @@
         // Show alert
         if ([message isEqualToString:@"THE GAME IS ON"]) {
             NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
+            [[NSUserDefaults standardUserDefaults] setObject:[RESTfulAPIManager sharedInstance].sessionId forKey:kSessionId];
             GuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GuessViewController"];
             [self presentViewController:vc animated:YES completion:nil];
         } else if ([message isEqualToString:@"Missing player id"]) {
