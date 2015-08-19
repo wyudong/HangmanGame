@@ -10,6 +10,7 @@
 #import "RESTfulAPIManager.h"
 #import "FUIButton+GameButton.h"
 #import "FUITextField+GameTextField.h"
+#import "MBProgressHUD.h"
 
 @interface WelcomeViewController ()
 
@@ -47,17 +48,49 @@
     NSLog(@"click new game");
     
     [self dismissKeyboard];
+    
+    // Show connecting progress
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"Connecting...";
+    hud.labelFont = [UIFont boldFlatFontOfSize:16];
+    hud.labelColor = [UIColor cloudsColor];
 
+    // Do HTTP request
     [[RESTfulAPIManager sharedInstance] startGameWithPlayerId:self.playerIdTextFiled.text
                                             completionHandler:^(NSString *message, NSError *error) {
-         if ([message isEqualToString:@"THE GAME IS ON"]) {
-             NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
-         } else if ([message isEqualToString:@"Player does not exist"]){
-             NSLog(@"Please check your ID and try again");
-         } else {
-             NSLog(@"There occurs an error when starting the game. Please Try again later.");
-         }
-     }];
+        [hud hide:YES];
+                                                
+        if ([message isEqualToString:@"THE GAME IS ON"]) {
+            NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
+            [self showStartGameAlertWithTitle:@"Welcome" message:@"Ready for game!"];
+        } else if ([message isEqualToString:@"Missing player id"]) {
+            [self showStartGameAlertWithTitle:@"Oops!" message:@"Please fill your ID first."];
+        } else if ([message isEqualToString:@"Player does not exist"]){
+            [self showStartGameAlertWithTitle:@"Oops!" message:@"Please check your ID and try again."];
+        } else {
+            [self showStartGameAlertWithTitle:@"Oops!" message:@"There occurs an error when starting the game. Please Try again later."];
+        }
+    }];
+}
+
+- (void)showStartGameAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:nil cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+    alertView.titleLabel.textColor = [UIColor cloudsColor];
+    alertView.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    alertView.messageLabel.textColor = [UIColor cloudsColor];
+    alertView.messageLabel.font = [UIFont flatFontOfSize:14];
+    alertView.backgroundOverlay.backgroundColor = [[UIColor cloudsColor] colorWithAlphaComponent:0.8];
+    alertView.alertContainer.backgroundColor = [UIColor midnightBlueColor];
+    alertView.defaultButtonColor = [UIColor cloudsColor];
+    alertView.defaultButtonShadowColor = [UIColor asbestosColor];
+    alertView.defaultButtonFont = [UIFont boldFlatFontOfSize:16];
+    alertView.defaultButtonTitleColor = [UIColor asbestosColor];
+    [alertView show];
 }
 
 - (void)clickContinueGameButton:(UIButton *)sender

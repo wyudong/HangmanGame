@@ -19,6 +19,10 @@
 		BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB11B8423C200124756 /* FUIButton+GameButton.m */; };
 		BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */; };
 		BF964CB81B846F1300124756 /* RESTfulAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB71B846F1300124756 /* RESTfulAPIManager.m */; };
+		BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */; };
+		BFCE78CE1B84ACD700F0675E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78CD1B84ACD700F0675E /* Foundation.framework */; };
+		BFCE78D01B84ACDE00F0675E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78CF1B84ACDE00F0675E /* UIKit.framework */; };
+		BFCE78D21B84ACE900F0675E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,11 @@
 		BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUITextField+GameTextField.m"; sourceTree = "<group>"; };
 		BF964CB61B846F1300124756 /* RESTfulAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTfulAPIManager.h; sourceTree = "<group>"; };
 		BF964CB71B846F1300124756 /* RESTfulAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTfulAPIManager.m; sourceTree = "<group>"; };
+		BFCE78CA1B84AC7900F0675E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		BFCE78CD1B84ACD700F0675E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BFCE78CF1B84ACDE00F0675E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFCE78D21B84ACE900F0675E /* CoreGraphics.framework in Frameworks */,
 				BF964CAF1B8384D600124756 /* CoreText.framework in Frameworks */,
+				BFCE78CE1B84ACD700F0675E /* Foundation.framework in Frameworks */,
 				78A7BF9A9AD7ABEA90ABD3B9 /* libPods.a in Frameworks */,
+				BFCE78D01B84ACDE00F0675E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,8 +101,11 @@
 		29B4DE3B43CBF001482B636C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */,
 				BF964CAE1B8384D600124756 /* CoreText.framework */,
+				BFCE78CD1B84ACD700F0675E /* Foundation.framework */,
 				20B8096C288F4E1D2FFAC6D0 /* libPods.a */,
+				BFCE78CF1B84ACDE00F0675E /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -124,6 +139,8 @@
 				BF964CB11B8423C200124756 /* FUIButton+GameButton.m */,
 				BF964CB31B84484C00124756 /* FUITextField+GameTextField.h */,
 				BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */,
+				BFCE78CA1B84AC7900F0675E /* MBProgressHUD.h */,
+				BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */,
 				BF964CB61B846F1300124756 /* RESTfulAPIManager.h */,
 				BF964CB71B846F1300124756 /* RESTfulAPIManager.m */,
 				BF3C05741B836E8C0059AAD7 /* WelcomeViewController.h */,
@@ -303,6 +320,7 @@
 				BF3C05701B836E8C0059AAD7 /* main.m in Sources */,
 				BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */,
 				BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */,
+				BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

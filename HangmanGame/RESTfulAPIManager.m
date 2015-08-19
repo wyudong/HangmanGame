@@ -57,35 +57,35 @@
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
-       if (data) {
-           NSError *parseError;
-           NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
-           NSLog(@"json: %@", jsonDictionary);
+        if (data) {
+            NSError *parseError;
+            NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+            NSLog(@"json: %@", jsonDictionary);
            
-           if ([jsonDictionary isKindOfClass:[NSDictionary class]]) {
-               self.message = [jsonDictionary objectForKey:@"message"];
-               self.sessionId = [jsonDictionary objectForKey:@"sessionId"];
-               NSDictionary *dataDictionary = [jsonDictionary objectForKey:@"data"];
-               self.numberOfWordsToGuess = [[dataDictionary objectForKey:@"numberOfWordsToGuess"] integerValue];
-               self.numberOfGuessAllowedForEachWord = [[dataDictionary objectForKey:@"numberOfGuessAllowedForEachWord"] integerValue];
-               
-               NSLog(@"message: %@",self. message);
-               NSLog(@"sessionId: %@", self.sessionId);
-               NSLog(@"numberOfWordsToGuess: %lu",self. numberOfWordsToGuess);
-               NSLog(@"numberOfGuessAllowedForEachWord: %lu", self.numberOfGuessAllowedForEachWord);
-               
-               if (handler) {
-                   handler(self.message, NULL);
-               }
-           } else if (handler) {
-               handler(nil, parseError);
-           }
-       } else {
-           if (handler) {
-               handler(nil, connectionError);
-           }
-       }
-   }];
+            if ([jsonDictionary isKindOfClass:[NSDictionary class]]) {
+                self.message = [jsonDictionary objectForKey:@"message"];
+                self.sessionId = [jsonDictionary objectForKey:@"sessionId"];
+                NSDictionary *dataDictionary = [jsonDictionary objectForKey:@"data"];
+                self.numberOfWordsToGuess = [[dataDictionary objectForKey:@"numberOfWordsToGuess"] integerValue];
+                self.numberOfGuessAllowedForEachWord = [[dataDictionary objectForKey:@"numberOfGuessAllowedForEachWord"] integerValue];
+                
+                NSLog(@"message: %@",self. message);
+                NSLog(@"sessionId: %@", self.sessionId);
+                NSLog(@"numberOfWordsToGuess: %lu",self. numberOfWordsToGuess);
+                NSLog(@"numberOfGuessAllowedForEachWord: %lu", self.numberOfGuessAllowedForEachWord);
+                
+                if (handler) {
+                    handler(self.message, NULL);
+                }
+            } else if (handler) {
+                handler(nil, parseError);
+            }
+        } else {
+            if (handler) {
+                handler(nil, connectionError);
+            }
+        }
+    }];
 }
 
 @end

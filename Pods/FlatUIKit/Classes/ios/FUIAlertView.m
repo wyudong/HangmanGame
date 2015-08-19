@@ -53,6 +53,8 @@
         
         UIView *alertContainer = [[UIView alloc] init];
         alertContainer.backgroundColor = [UIColor yellowColor];
+        alertContainer.layer.cornerRadius = 3.0f;
+        alertContainer.layer.masksToBounds = YES;
         [self addSubview:alertContainer];
         [self bringSubviewToFront:alertContainer];
         _alertContainer = alertContainer;
