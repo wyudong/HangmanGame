@@ -12,5 +12,7 @@
 @interface FUIButton (HMButton)
 
 - (void)drawButtonWithTypeMenu;
+- (void)drawButtonWithTypeKeyboard;
+- (void)highlightKeyboardButton:(BOOL)highlighted;
 
 @end

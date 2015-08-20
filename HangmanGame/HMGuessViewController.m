@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *guessingWordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordMarginLabel;
 @property (nonatomic, strong) NSString *guessingWord;
+@property (strong, nonatomic) IBOutletCollection(FUIButton) NSArray *keyboardButtons;
 
 @end
 
@@ -39,6 +40,11 @@
     self.wordMarginLabel.backgroundColor = [UIColor whiteColor];
     self.wordMarginLabel.clipsToBounds = YES;
     self.wordMarginLabel.layer.cornerRadius = 6.0f;
+    
+    // Draw keyboard
+    for (FUIButton *button in self.keyboardButtons) {
+        [button drawButtonWithTypeKeyboard];
+    }
     
     [self giveMeAWord];
 }
@@ -61,6 +67,31 @@
 #warning request word error
         }
     }];
+}
+
+- (IBAction)touchKeyboardButton:(id)sender
+{
+    FUIButton *buttonToFreeze = (FUIButton *)sender;
+    [self freezeButton:buttonToFreeze];
+    
+    for (FUIButton *button in self.keyboardButtons) {
+        if (button != buttonToFreeze) {
+            [self meltButton:button];
+        }
+    }
+    
+    NSUInteger index = [self.keyboardButtons indexOfObject:sender];
+    NSLog(@"chosen button index: %lu", index);
+}
+
+- (void)freezeButton:(FUIButton *)button
+{
+    [button highlightKeyboardButton:YES];
+}
+
+- (void)meltButton:(FUIButton *)button
+{
+    [button highlightKeyboardButton:NO];
 }
 
 @end
