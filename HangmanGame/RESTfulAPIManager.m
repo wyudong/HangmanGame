@@ -25,9 +25,18 @@
     return sharedInstance;
 }
 
+- (void)resetUserDefaults
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kSessionId];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kTotalWordCount];
+}
+
 - (void)startGameWithPlayerId:(NSString *)idString
             completionHandler:(void (^)(NSString *, NSError *))handler
 {
+    // Reset game save data
+    [self resetUserDefaults];
+    
     // URL
     NSString *urlString = URL_HOST;
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];

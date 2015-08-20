@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordMarginLabel;
 @property (nonatomic, strong) NSString *guessingWord;
 @property (strong, nonatomic) IBOutletCollection(FUIButton) NSArray *keyboardButtons;
+@property NSInteger totalWordCount;
 @property NSInteger buttonToMeltIndex;
 
 @end
@@ -53,7 +54,11 @@
 
 - (void)giveMeAWord
 {
-    [HMProgressHUD showProgressHUDWithMessage:@"Your first word is..." view:self.view];
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:kTotalWordCount] == 0) {
+        [HMProgressHUD showProgressHUDWithMessage:@"Your first word is..." view:self.view];
+    } else {
+        [HMProgressHUD showProgressHUDWithMessage:@"Next word is..." view:self.view];
+    }
     
     NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:kSessionId];
     NSLog(@"sessionId: %@", sessionId);
@@ -65,6 +70,9 @@
             self.guessingWord = [RESTfulAPIManager sharedInstance].word;
             self.guessingWordLabel.backgroundColor = [UIColor whiteColor];
             NSLog(@"word: %@", self.guessingWord);
+            
+            self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
+            [[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
         } else {
 #warning request word error
         }
