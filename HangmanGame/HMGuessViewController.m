@@ -18,8 +18,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *guessingWordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordMarginLabel;
-@property (nonatomic, strong) NSString *guessingWord;
 @property (strong, nonatomic) IBOutletCollection(FUIButton) NSArray *keyboardButtons;
+@property (strong, nonatomic) NSString *guessingWord;
 @property NSInteger totalWordCount;
 @property NSInteger buttonToMeltIndex;
 
