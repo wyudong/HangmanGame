@@ -24,24 +24,28 @@
 
 - (void)drawButtonWithTypeKeyboard
 {
-    self.buttonColor = [UIColor silverColor];
-    self.shadowColor = [UIColor concreteColor];
+    self.buttonColor = [UIColor cloudsColor];
+    self.shadowColor = [UIColor silverColor];
     self.shadowHeight = 3.0f;
     self.cornerRadius = 6.0f;
     self.titleLabel.font = [UIFont boldFlatFontOfSize:16];
     
-    [self setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
-    [self setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
+    [self setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateNormal];
+    [self setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateHighlighted];
 }
 
 - (void)highlightKeyboardButton:(BOOL)highlighted
 {
     if (highlighted) {
-        self.buttonColor = [UIColor belizeHoleColor];
+        self.buttonColor = [UIColor wetAsphaltColor];
         self.shadowColor = [UIColor midnightBlueColor];
+        [self setTitleColor:[UIColor cloudsColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor cloudsColor] forState:UIControlStateHighlighted];
     } else {
-        self.buttonColor = [UIColor silverColor];
-        self.shadowColor = [UIColor concreteColor];
+        self.buttonColor = [UIColor cloudsColor];
+        self.shadowColor = [UIColor silverColor];
+        [self setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateHighlighted];
     }
 }
 

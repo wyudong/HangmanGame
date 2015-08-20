@@ -86,12 +86,13 @@
     
     FUIButton *buttonToFreeze = (FUIButton *)sender;
     
-    if (self.buttonToMeltIndex > 0) {
+    if (self.buttonToMeltIndex >= 0) {
         [self meltButton:[self.keyboardButtons objectAtIndex:self.buttonToMeltIndex]];
     }
     
     [self freezeButton:buttonToFreeze];
     self.buttonToMeltIndex = index;
+    NSLog(@"touch: %@", buttonToFreeze.titleLabel.text);
 }
 
 - (void)freezeButton:(FUIButton *)button
