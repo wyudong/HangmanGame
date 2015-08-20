@@ -38,13 +38,13 @@
     self.playerIdTextFiled.delegate = self;
     
     [self.startGameButton drawButtonWithTypeMenu];
-    [self.startGameButton addTarget:self action:@selector(clickStartGameButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.startGameButton addTarget:self action:@selector(touchStartGameButton:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.continueGameButton drawButtonWithTypeMenu];
-    [self.continueGameButton addTarget:self action:@selector(clickContinueGameButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.continueGameButton addTarget:self action:@selector(touchContinueGameButton:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)clickStartGameButton:(UIButton *)sender
+- (void)touchStartGameButton:(UIButton *)sender
 {
     NSLog(@"click new game");
     
@@ -93,7 +93,7 @@
     [alertView show];
 }
 
-- (void)clickContinueGameButton:(UIButton *)sender
+- (void)touchContinueGameButton:(UIButton *)sender
 {
     NSLog(@"click continue game");
 

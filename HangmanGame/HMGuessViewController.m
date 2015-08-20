@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 wyudong. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "HMGuessViewController.h"
 #import "HMHeader.h"
 #import "RESTfulAPIManager.h"
 #import "FUIButton+HMButton.h"
 #import "FUITextField+HMTextField.h"
 #import "HMProgressHUD.h"
-#import <QuartzCore/QuartzCore.h>
 
 @interface HMGuessViewController ()
 
