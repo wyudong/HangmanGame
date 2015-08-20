@@ -11,7 +11,7 @@
 #import "RESTfulAPIManager.h"
 #import "FUIButton+HMButton.h"
 #import "FUITextField+HMTextField.h"
-#import "MBProgressHUD.h"
+#import "HMProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface HMGuessViewController ()
@@ -45,19 +45,15 @@
 
 - (void)giveMeAWord
 {
-    // Show connecting progress
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Your fisrt word is...";
-    hud.labelFont = [UIFont boldFlatFontOfSize:16];
-    hud.labelColor = [UIColor cloudsColor];
+    [HMProgressHUD showProgressHUDWithMessage:@"Your first word is..." view:self.view];
     
     NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:kSessionId];
     NSLog(@"sessionId: %@", sessionId);
     [[RESTfulAPIManager sharedInstance] requestWordWithSessionId:sessionId
                                                completionHandler:^(BOOL success, NSError *error) {
         if (success) {
-            [hud hide:YES];
+            [HMProgressHUD hideProgressHUD:self.view];
+            
             self.guessingWord = [RESTfulAPIManager sharedInstance].word;
             self.guessingWordLabel.backgroundColor = [UIColor whiteColor];
             NSLog(@"word: %@", self.guessingWord);

@@ -11,7 +11,7 @@
 #import "RESTfulAPIManager.h"
 #import "FUIButton+HMButton.h"
 #import "FUITextField+HMTextField.h"
-#import "MBProgressHUD.h"
+#import "HMProgressHUD.h"
 #import "HMGuessViewController.h"
 
 @interface HMWelcomeViewController ()
@@ -51,16 +51,12 @@
     [self dismissKeyboard];
     
     // Show connecting progress
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"Connecting...";
-    hud.labelFont = [UIFont boldFlatFontOfSize:16];
-    hud.labelColor = [UIColor cloudsColor];
+    [HMProgressHUD showProgressHUDWithMessage:@"Connecting..." view:self.view];
 
     // Do HTTP request
     [[RESTfulAPIManager sharedInstance] startGameWithPlayerId:self.playerIdTextFiled.text
                                             completionHandler:^(NSString *message, NSError *error) {
-        [hud hide:YES];
+        [HMProgressHUD hideProgressHUD:self.view];
            
         // Show alert
         if ([message isEqualToString:@"THE GAME IS ON"]) {
