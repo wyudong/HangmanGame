@@ -15,5 +15,8 @@ extern NSString *const kMessage;
 extern NSString *const kData;
 extern NSString *const kNumberOfWordsToGuess;
 extern NSString *const kNumberOfGuessAllowedForEachWord;
+extern NSString *const kWord;
+extern NSString *const kTotalWordCount;
+extern NSString *const kWrongGuessCountOfCurrentWord;
 
 @end

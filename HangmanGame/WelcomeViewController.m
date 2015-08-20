@@ -42,7 +42,6 @@
     
     [self.continueGameButton drawButtonWithTypeMenu];
     [self.continueGameButton addTarget:self action:@selector(clickContinueGameButton:) forControlEvents:UIControlEventTouchUpInside];
-
 }
 
 - (void)clickStartGameButton:(UIButton *)sender

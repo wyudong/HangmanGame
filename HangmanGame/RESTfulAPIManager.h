@@ -12,11 +12,16 @@
 
 @property (nonatomic, strong) NSString *message;
 @property (nonatomic, strong) NSString *sessionId;
+@property (nonatomic, strong) NSString *word;
 @property NSUInteger numberOfWordsToGuess;
 @property NSUInteger numberOfGuessAllowedForEachWord;
+@property NSUInteger totalWordCount;
+@property NSUInteger wrongGuessCountOfCurrentWord;
 
 + (RESTfulAPIManager *)sharedInstance;
 - (void)startGameWithPlayerId:(NSString *)idString
             completionHandler:(void (^)(NSString *message, NSError *error)) handler;
+- (void)requestWordWithSessionId:(NSString *)sessionId
+              completionHandler:(void (^)(BOOL success, NSError *error)) handler;
 
 @end

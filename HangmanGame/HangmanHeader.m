@@ -15,5 +15,8 @@ NSString *const kMessage = @"message";
 NSString *const kData = @"data";
 NSString *const kNumberOfWordsToGuess = @"numberOfWordsToGuess";
 NSString *const kNumberOfGuessAllowedForEachWord = @"numberOfGuessAllowedForEachWord";
+NSString *const kWord = @"word";
+NSString *const kTotalWordCount = @"totalWordCount";
+NSString *const kWrongGuessCountOfCurrentWord = @"wrongGuessCountOfCurrentWord";
 
 @end
