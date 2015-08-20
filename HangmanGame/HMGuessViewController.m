@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordMarginLabel;
 @property (nonatomic, strong) NSString *guessingWord;
 @property (strong, nonatomic) IBOutletCollection(FUIButton) NSArray *keyboardButtons;
+@property NSInteger buttonToMeltIndex;
 
 @end
 
@@ -42,6 +43,7 @@
     self.wordMarginLabel.layer.cornerRadius = 6.0f;
     
     // Draw keyboard
+    self.buttonToMeltIndex = -1;
     for (FUIButton *button in self.keyboardButtons) {
         [button drawButtonWithTypeKeyboard];
     }
@@ -71,17 +73,17 @@
 
 - (IBAction)touchKeyboardButton:(id)sender
 {
-    FUIButton *buttonToFreeze = (FUIButton *)sender;
-    [self freezeButton:buttonToFreeze];
-    
-    for (FUIButton *button in self.keyboardButtons) {
-        if (button != buttonToFreeze) {
-            [self meltButton:button];
-        }
-    }
-    
     NSUInteger index = [self.keyboardButtons indexOfObject:sender];
     NSLog(@"chosen button index: %lu", index);
+    
+    FUIButton *buttonToFreeze = (FUIButton *)sender;
+    
+    if (self.buttonToMeltIndex > 0) {
+        [self meltButton:[self.keyboardButtons objectAtIndex:self.buttonToMeltIndex]];
+    }
+    
+    [self freezeButton:buttonToFreeze];
+    self.buttonToMeltIndex = index;
 }
 
 - (void)freezeButton:(FUIButton *)button
