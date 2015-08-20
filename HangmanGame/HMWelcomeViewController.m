@@ -1,20 +1,20 @@
 //
-//  WelcomeViewController
+//  HMWelcomeViewController
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/18.
 //  Copyright (c) 2015年 wyudong. All rights reserved.
 //
 
-#import "WelcomeViewController.h"
-#import "HangmanHeader.h"
+#import "HMWelcomeViewController.h"
+#import "HMHeader.h"
 #import "RESTfulAPIManager.h"
-#import "FUIButton+GameButton.h"
-#import "FUITextField+GameTextField.h"
+#import "FUIButton+HMButton.h"
+#import "FUITextField+HMTextField.h"
 #import "MBProgressHUD.h"
-#import "GuessViewController.h"
+#import "HMGuessViewController.h"
 
-@interface WelcomeViewController ()
+@interface HMWelcomeViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *gameTitle;
 @property (weak, nonatomic) IBOutlet FUITextField *playerIdTextFiled;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation WelcomeViewController
+@implementation HMWelcomeViewController
 
 - (void)viewDidLoad
 {
@@ -66,7 +66,7 @@
         if ([message isEqualToString:@"THE GAME IS ON"]) {
             NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
             [[NSUserDefaults standardUserDefaults] setObject:[RESTfulAPIManager sharedInstance].sessionId forKey:kSessionId];
-            GuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"GuessViewController"];
+            HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
             [self presentViewController:vc animated:YES completion:nil];
         } else if ([message isEqualToString:@"Missing player id"]) {
             [self showStartGameAlertWithTitle:@"Oops!" message:@"Please fill your ID first."];

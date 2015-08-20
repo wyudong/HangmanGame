@@ -1,5 +1,5 @@
 //
-//  HangmanHeader.h
+//  HMHeader.h
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/19.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HangmanHeader : NSObject
+@interface HMHeader : NSObject
 
 extern NSString *const kSessionId;
 extern NSString *const kMessage;

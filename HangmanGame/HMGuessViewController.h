@@ -1,5 +1,5 @@
 //
-//  GuessViewController.h
+//  HMGuessViewController.h
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/19.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GuessViewController : UIViewController
+@interface HMGuessViewController : UIViewController
 
 @end

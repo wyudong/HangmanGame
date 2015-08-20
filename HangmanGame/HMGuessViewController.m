@@ -1,20 +1,20 @@
 //
-//  GuessViewController.m
+//  HMGuessViewController.m
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/19.
 //  Copyright (c) 2015年 wyudong. All rights reserved.
 //
 
-#import "GuessViewController.h"
-#import "HangmanHeader.h"
+#import "HMGuessViewController.h"
+#import "HMHeader.h"
 #import "RESTfulAPIManager.h"
-#import "FUIButton+GameButton.h"
-#import "FUITextField+GameTextField.h"
+#import "FUIButton+HMButton.h"
+#import "FUITextField+HMTextField.h"
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface GuessViewController ()
+@interface HMGuessViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *guessingWordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordMarginLabel;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation GuessViewController
+@implementation HMGuessViewController
 
 - (void)setGuessingWord:(NSString *)guessingWord
 {

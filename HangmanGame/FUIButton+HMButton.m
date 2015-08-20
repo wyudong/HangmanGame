@@ -1,14 +1,14 @@
 //
-//  FUIButton+GameButton.m
+//  FUIButton+HMButton.m
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/19.
 //  Copyright (c) 2015年 wyudong. All rights reserved.
 //
 
-#import "FUIButton+GameButton.h"
+#import "FUIButton+HMButton.h"
 
-@implementation FUIButton (GameButton)
+@implementation FUIButton (HMButton)
 
 - (void)drawButtonWithTypeMenu
 {

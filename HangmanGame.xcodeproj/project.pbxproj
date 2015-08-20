@@ -10,21 +10,21 @@
 		78A7BF9A9AD7ABEA90ABD3B9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B8096C288F4E1D2FFAC6D0 /* libPods.a */; };
 		BF3C05701B836E8C0059AAD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C056F1B836E8C0059AAD7 /* main.m */; };
 		BF3C05731B836E8C0059AAD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C05721B836E8C0059AAD7 /* AppDelegate.m */; };
-		BF3C05761B836E8C0059AAD7 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C05751B836E8C0059AAD7 /* WelcomeViewController.m */; };
+		BF3C05761B836E8C0059AAD7 /* HMWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C05751B836E8C0059AAD7 /* HMWelcomeViewController.m */; };
 		BF3C05791B836E8C0059AAD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF3C05771B836E8C0059AAD7 /* Main.storyboard */; };
 		BF3C057B1B836E8C0059AAD7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF3C057A1B836E8C0059AAD7 /* Images.xcassets */; };
 		BF3C057E1B836E8C0059AAD7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF3C057C1B836E8C0059AAD7 /* LaunchScreen.xib */; };
 		BF3C058A1B836E8D0059AAD7 /* HangmanGameTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BF3C05891B836E8D0059AAD7 /* HangmanGameTests.m */; };
 		BF964CAF1B8384D600124756 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF964CAE1B8384D600124756 /* CoreText.framework */; };
-		BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB11B8423C200124756 /* FUIButton+GameButton.m */; };
-		BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */; };
+		BF964CB21B8423C200124756 /* FUIButton+HMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB11B8423C200124756 /* FUIButton+HMButton.m */; };
+		BF964CB51B84484C00124756 /* FUITextField+HMTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB41B84484C00124756 /* FUITextField+HMTextField.m */; };
 		BF964CB81B846F1300124756 /* RESTfulAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BF964CB71B846F1300124756 /* RESTfulAPIManager.m */; };
 		BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */; };
 		BFCE78CE1B84ACD700F0675E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78CD1B84ACD700F0675E /* Foundation.framework */; };
 		BFCE78D01B84ACDE00F0675E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78CF1B84ACDE00F0675E /* UIKit.framework */; };
 		BFCE78D21B84ACE900F0675E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */; };
-		BFCE78D51B84CB2200F0675E /* GuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D41B84CB2200F0675E /* GuessViewController.m */; };
-		BFCE78DA1B84D5AE00F0675E /* HangmanHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D91B84D5AE00F0675E /* HangmanHeader.m */; };
+		BFCE78D51B84CB2200F0675E /* HMGuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D41B84CB2200F0675E /* HMGuessViewController.m */; };
+		BFCE78DA1B84D5AE00F0675E /* HMHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D91B84D5AE00F0675E /* HMHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,8 +46,8 @@
 		BF3C056F1B836E8C0059AAD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BF3C05711B836E8C0059AAD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BF3C05721B836E8C0059AAD7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		BF3C05741B836E8C0059AAD7 /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
-		BF3C05751B836E8C0059AAD7 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		BF3C05741B836E8C0059AAD7 /* HMWelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMWelcomeViewController.h; sourceTree = "<group>"; };
+		BF3C05751B836E8C0059AAD7 /* HMWelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMWelcomeViewController.m; sourceTree = "<group>"; };
 		BF3C05781B836E8C0059AAD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF3C057A1B836E8C0059AAD7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BF3C057D1B836E8C0059AAD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -55,10 +55,10 @@
 		BF3C05881B836E8D0059AAD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF3C05891B836E8D0059AAD7 /* HangmanGameTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HangmanGameTests.m; sourceTree = "<group>"; };
 		BF964CAE1B8384D600124756 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		BF964CB01B8423C200124756 /* FUIButton+GameButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FUIButton+GameButton.h"; sourceTree = "<group>"; };
-		BF964CB11B8423C200124756 /* FUIButton+GameButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUIButton+GameButton.m"; sourceTree = "<group>"; };
-		BF964CB31B84484C00124756 /* FUITextField+GameTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FUITextField+GameTextField.h"; sourceTree = "<group>"; };
-		BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUITextField+GameTextField.m"; sourceTree = "<group>"; };
+		BF964CB01B8423C200124756 /* FUIButton+HMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FUIButton+HMButton.h"; sourceTree = "<group>"; };
+		BF964CB11B8423C200124756 /* FUIButton+HMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUIButton+HMButton.m"; sourceTree = "<group>"; };
+		BF964CB31B84484C00124756 /* FUITextField+HMTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FUITextField+HMTextField.h"; sourceTree = "<group>"; };
+		BF964CB41B84484C00124756 /* FUITextField+HMTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUITextField+HMTextField.m"; sourceTree = "<group>"; };
 		BF964CB61B846F1300124756 /* RESTfulAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESTfulAPIManager.h; sourceTree = "<group>"; };
 		BF964CB71B846F1300124756 /* RESTfulAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESTfulAPIManager.m; sourceTree = "<group>"; };
 		BFCE78CA1B84AC7900F0675E /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -66,10 +66,10 @@
 		BFCE78CD1B84ACD700F0675E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFCE78CF1B84ACDE00F0675E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFCE78D11B84ACE900F0675E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BFCE78D31B84CB2200F0675E /* GuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuessViewController.h; sourceTree = "<group>"; };
-		BFCE78D41B84CB2200F0675E /* GuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuessViewController.m; sourceTree = "<group>"; };
-		BFCE78D81B84D5AE00F0675E /* HangmanHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HangmanHeader.h; sourceTree = "<group>"; };
-		BFCE78D91B84D5AE00F0675E /* HangmanHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HangmanHeader.m; sourceTree = "<group>"; };
+		BFCE78D31B84CB2200F0675E /* HMGuessViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGuessViewController.h; sourceTree = "<group>"; };
+		BFCE78D41B84CB2200F0675E /* HMGuessViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGuessViewController.m; sourceTree = "<group>"; };
+		BFCE78D81B84D5AE00F0675E /* HMHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHeader.h; sourceTree = "<group>"; };
+		BFCE78D91B84D5AE00F0675E /* HMHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,20 +141,20 @@
 			children = (
 				BF3C05711B836E8C0059AAD7 /* AppDelegate.h */,
 				BF3C05721B836E8C0059AAD7 /* AppDelegate.m */,
-				BFCE78D81B84D5AE00F0675E /* HangmanHeader.h */,
-				BFCE78D91B84D5AE00F0675E /* HangmanHeader.m */,
-				BF964CB01B8423C200124756 /* FUIButton+GameButton.h */,
-				BF964CB11B8423C200124756 /* FUIButton+GameButton.m */,
-				BF964CB31B84484C00124756 /* FUITextField+GameTextField.h */,
-				BF964CB41B84484C00124756 /* FUITextField+GameTextField.m */,
+				BFCE78D81B84D5AE00F0675E /* HMHeader.h */,
+				BFCE78D91B84D5AE00F0675E /* HMHeader.m */,
+				BF964CB01B8423C200124756 /* FUIButton+HMButton.h */,
+				BF964CB11B8423C200124756 /* FUIButton+HMButton.m */,
+				BF964CB31B84484C00124756 /* FUITextField+HMTextField.h */,
+				BF964CB41B84484C00124756 /* FUITextField+HMTextField.m */,
 				BFCE78CA1B84AC7900F0675E /* MBProgressHUD.h */,
 				BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */,
 				BF964CB61B846F1300124756 /* RESTfulAPIManager.h */,
 				BF964CB71B846F1300124756 /* RESTfulAPIManager.m */,
-				BF3C05741B836E8C0059AAD7 /* WelcomeViewController.h */,
-				BF3C05751B836E8C0059AAD7 /* WelcomeViewController.m */,
-				BFCE78D31B84CB2200F0675E /* GuessViewController.h */,
-				BFCE78D41B84CB2200F0675E /* GuessViewController.m */,
+				BF3C05741B836E8C0059AAD7 /* HMWelcomeViewController.h */,
+				BF3C05751B836E8C0059AAD7 /* HMWelcomeViewController.m */,
+				BFCE78D31B84CB2200F0675E /* HMGuessViewController.h */,
+				BFCE78D41B84CB2200F0675E /* HMGuessViewController.m */,
 				BF3C05771B836E8C0059AAD7 /* Main.storyboard */,
 				BF3C057A1B836E8C0059AAD7 /* Images.xcassets */,
 				BF3C057C1B836E8C0059AAD7 /* LaunchScreen.xib */,
@@ -324,14 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF3C05761B836E8C0059AAD7 /* WelcomeViewController.m in Sources */,
+				BF3C05761B836E8C0059AAD7 /* HMWelcomeViewController.m in Sources */,
 				BF3C05731B836E8C0059AAD7 /* AppDelegate.m in Sources */,
 				BF964CB81B846F1300124756 /* RESTfulAPIManager.m in Sources */,
 				BF3C05701B836E8C0059AAD7 /* main.m in Sources */,
-				BF964CB51B84484C00124756 /* FUITextField+GameTextField.m in Sources */,
-				BFCE78DA1B84D5AE00F0675E /* HangmanHeader.m in Sources */,
-				BF964CB21B8423C200124756 /* FUIButton+GameButton.m in Sources */,
-				BFCE78D51B84CB2200F0675E /* GuessViewController.m in Sources */,
+				BF964CB51B84484C00124756 /* FUITextField+HMTextField.m in Sources */,
+				BFCE78DA1B84D5AE00F0675E /* HMHeader.m in Sources */,
+				BF964CB21B8423C200124756 /* FUIButton+HMButton.m in Sources */,
+				BFCE78D51B84CB2200F0675E /* HMGuessViewController.m in Sources */,
 				BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

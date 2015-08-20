@@ -1,14 +1,14 @@
 //
-//  FUITextField+GameTextField.m
+//  FUITextField+HMTextField.m
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/19.
 //  Copyright (c) 2015年 wyudong. All rights reserved.
 //
 
-#import "FUITextField+GameTextField.h"
+#import "FUITextField+HMTextField.h"
 
-@implementation FUITextField (GameTextField)
+@implementation FUITextField (HMTextField)
 
 - (void)drawTextField
 {

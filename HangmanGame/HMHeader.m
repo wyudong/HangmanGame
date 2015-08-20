@@ -1,14 +1,14 @@
 //
-//  HangmanHeader.m
+//  HMHeader.m
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/19.
 //  Copyright (c) 2015年 wyudong. All rights reserved.
 //
 
-#import "HangmanHeader.h"
+#import "HMHeader.h"
 
-@implementation HangmanHeader
+@implementation HMHeader
 
 NSString *const kSessionId = @"sessionId";
 NSString *const kMessage = @"message";

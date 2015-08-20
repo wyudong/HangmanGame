@@ -7,7 +7,7 @@
 //
 
 #import "RESTfulAPIManager.h"
-#import "HangmanHeader.h"
+#import "HMHeader.h"
 
 #define URL_HOST @"https://strikingly-hangman.herokuapp.com/game/on"
 

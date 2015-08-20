@@ -1,5 +1,5 @@
 //
-//  WelcomeViewController
+//  HMWelcomeViewController
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/18.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WelcomeViewController : UIViewController <UITextFieldDelegate>
+@interface HMWelcomeViewController : UIViewController <UITextFieldDelegate>
 
 @end
 

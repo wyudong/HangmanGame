@@ -1,16 +1,16 @@
 //
-//  FUITextField+GameTextField.h
+//  FUIButton+HMButton.h
 //  HangmanGame
 //
 //  Created by wyudong on 15/8/19.
 //  Copyright (c) 2015年 wyudong. All rights reserved.
 //
 
-#import "FUITextField.h"
+#import <UIKit/UIKit.h>
 #import "FlatUIKit.h"
 
-@interface FUITextField (GameTextField)
+@interface FUIButton (HMButton)
 
-- (void)drawTextField;
+- (void)drawButtonWithTypeMenu;
 
 @end

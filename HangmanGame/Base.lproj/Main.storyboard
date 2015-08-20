@@ -10,7 +10,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="WelcomeViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="HMWelcomeViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -86,7 +86,7 @@
         <!--Guess View Controller-->
         <scene sceneID="sN7-Zk-uL5">
             <objects>
-                <viewController storyboardIdentifier="GuessViewController" id="lbG-6i-YGL" customClass="GuessViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HMGuessViewController" id="lbG-6i-YGL" customClass="HMGuessViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Nh-Wb-WFs"/>
                         <viewControllerLayoutGuide type="bottom" id="TMt-ep-GMs"/>
@@ -96,7 +96,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="     " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dc2-zD-9Ku">
-                                <rect key="frame" x="284" y="96" width="32" height="29"/>
+                                <rect key="frame" x="284.5" y="96" width="32" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Dc2-zD-9Ku" secondAttribute="height" multiplier="5:1" priority="500" id="mNm-ao-QdL"/>
                                 </constraints>
@@ -105,7 +105,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="         " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8u-0P-6fo">
-                                <rect key="frame" x="264" y="86" width="72" height="49"/>
+                                <rect key="frame" x="264.5" y="86" width="72" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
