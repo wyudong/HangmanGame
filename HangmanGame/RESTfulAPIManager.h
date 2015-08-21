@@ -17,6 +17,7 @@
 @property NSUInteger numberOfGuessAllowedForEachWord;
 @property NSUInteger totalWordCount;
 @property NSUInteger wrongGuessCountOfCurrentWord;
+@property NSInteger score;
 
 + (RESTfulAPIManager *)sharedInstance;
 

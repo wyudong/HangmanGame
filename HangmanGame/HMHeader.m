@@ -18,5 +18,6 @@ NSString *const kNumberOfGuessAllowedForEachWord = @"numberOfGuessAllowedForEach
 NSString *const kWord = @"word";
 NSString *const kTotalWordCount = @"totalWordCount";
 NSString *const kWrongGuessCountOfCurrentWord = @"wrongGuessCountOfCurrentWord";
+NSString *const kScore = @"score";
 
 @end

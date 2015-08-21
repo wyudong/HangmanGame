@@ -20,10 +20,15 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *guessingWordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordMarginLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalWordCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *chanceRemainingLabel;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutletCollection(FUIButton) NSArray *keyboardButtons;
-@property (strong, nonatomic) NSString *guessingWord;   // from the server
+@property (strong, nonatomic) NSString *guessingWord;   // from server
 @property (strong, nonatomic) NSString *letterReadyForGuess;
-@property NSInteger totalWordCount;
+@property (nonatomic) NSUInteger totalWordCount;
+@property (nonatomic) NSUInteger chanceRemaining;
+@property (nonatomic) NSInteger score;
 @property NSInteger buttonToMeltIndex;
 
 @end
@@ -38,7 +43,25 @@
     self.guessingWordLabel.text = self.guessingWord;
 }
 
-- (NSInteger)remainingChance
+- (void)setTotalWordCount:(NSUInteger)totalWordCount
+{
+    _totalWordCount = totalWordCount;
+    self.totalWordCountLabel.text = [NSString stringWithFormat:@"WORD %ld/%ld" ,self.totalWordCount, [RESTfulAPIManager sharedInstance].numberOfWordsToGuess];
+}
+
+- (void)setChanceRemaining:(NSUInteger)chanceRemaining
+{
+    _chanceRemaining = chanceRemaining;
+    self.chanceRemainingLabel.text = [NSString stringWithFormat:@"CHANCE %ld", self.chanceRemaining];
+}
+
+- (void)setScore:(NSInteger)score
+{
+    _score = score;
+    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE %ld", self.score];
+}
+
+- (NSInteger)calculateChanceRemaining
 {
     return [RESTfulAPIManager sharedInstance].numberOfGuessAllowedForEachWord - [RESTfulAPIManager sharedInstance].wrongGuessCountOfCurrentWord;
 }
@@ -48,8 +71,9 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorFromHexCode:@"FFF8F2"];
+    self.guessingWordLabel.backgroundColor = [UIColor whiteColor];
     
-    //
+    // Margin around guessing word
     self.wordMarginLabel.layer.zPosition = -1.0;
     self.wordMarginLabel.backgroundColor = [UIColor whiteColor];
     self.wordMarginLabel.clipsToBounds = YES;
@@ -69,8 +93,8 @@
 - (void)giveMeAWord
 {
     // Show connecting progress
-    if ([self remainingChance] == 0) {
-        [HMProgressHUD showProgressHUDWithMessage:@"Try harder next round" view:self.view];
+    if ([self calculateChanceRemaining] == 0) {
+        [HMProgressHUD showProgressHUDWithMessage:@"Try harder in next round" view:self.view];
     } else if ([[NSUserDefaults standardUserDefaults] integerForKey:kTotalWordCount] == 0) {
         [HMProgressHUD showProgressHUDWithMessage:@"Your first word is..." view:self.view];
     } else {
@@ -84,12 +108,14 @@
         [HMProgressHUD hideProgressHUD:self.view];
             
         if (success) {
+            [self updateGuessingStats];
+            [self updateScore];
+            
             self.guessingWord = [RESTfulAPIManager sharedInstance].word;
-            self.guessingWordLabel.backgroundColor = [UIColor whiteColor];
             NSLog(@"word: %@", self.guessingWord);
             
             self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
-            [[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
+            //[[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
         } else {
             // Try to request the word again
             [self showGiveMeAWordAlertWithTitle:@"Oops..." message:@"There occurs an error when receiving a word. Would you like to "];
@@ -182,12 +208,27 @@
         [HMProgressHUD hideProgressHUD:self.view];
                                                 
         if (success) {
-            if ([self remainingChance] == 0) {
+            [self updateGuessingStats];
+            
+            if ([self calculateChanceRemaining] == 0) {
                 [self giveMeAWord];
             }
             self.guessingWord = [RESTfulAPIManager sharedInstance].word;
         }
     }];
+}
+
+#pragma Game stats
+
+- (void)updateGuessingStats
+{
+    self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
+    self.chanceRemaining = [self calculateChanceRemaining];
+}
+
+- (void)updateScore
+{
+    self.score = [RESTfulAPIManager sharedInstance].score;
 }
 
 @end
