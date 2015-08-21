@@ -29,7 +29,10 @@
 @property (nonatomic) NSUInteger totalWordCount;
 @property (nonatomic) NSUInteger chanceRemaining;
 @property (nonatomic) NSInteger score;
+@property BOOL didGetAWord;
+@property BOOL didGetScore;
 @property NSInteger buttonToMeltIndex;
+
 
 @end
 
@@ -85,12 +88,12 @@
         [button drawButtonWithTypeKeyboard];
     }
     
-    [self giveMeAWord];
+    [self getWordAndScore];
 }
 
-# pragma mark Get a word
+# pragma mark Get ready for guessing
 
-- (void)giveMeAWord
+- (void)getWordAndScore
 {
     // Show connecting progress
     if ([self calculateChanceRemaining] == 0) {
@@ -102,54 +105,84 @@
     }
     
     NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:kSessionId];
-    NSLog(@"sessionId: %@", sessionId);
+    NSLog(@"guessing view controller sessionId: %@", sessionId);
+    
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_queue_t queue = dispatch_queue_create("hangmangame.queue", DISPATCH_QUEUE_CONCURRENT);
+    
+    // Two queues for requesting word and score
+    dispatch_group_enter(group);
     [[RESTfulAPIManager sharedInstance] requestWordWithSessionId:sessionId
                                                completionHandler:^(BOOL success, NSError *error) {
-        [HMProgressHUD hideProgressHUD:self.view];
-            
-        if (success) {
-            [self updateGuessingStats];
-            [self updateScore];
-            
-            self.guessingWord = [RESTfulAPIManager sharedInstance].word;
-            NSLog(@"word: %@", self.guessingWord);
-            
-            self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
-            //[[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
-        } else {
-            // Try to request the word again
-            [self showGiveMeAWordAlertWithTitle:@"Oops..." message:@"There occurs an error when receiving a word. Would you like to "];
-        }
+        self.didGetAWord = success ? YES : NO;
+        dispatch_group_leave(group);
     }];
+    
+    dispatch_group_enter(group);
+    [[RESTfulAPIManager sharedInstance] getResultWithSessionId:sessionId
+                                             completionHandler:^(BOOL success, NSError *error) {
+        self.didGetScore = success ? YES : NO;
+        dispatch_group_leave(group);
+    }];
+    
+    dispatch_group_notify(group, queue, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [HMProgressHUD hideProgressHUD:self.view];
+            
+            // Update stats
+            if (self.didGetAWord) {
+                [self updateGuessingStats];
+                if (self.didGetScore) {
+                    [self updateScore];
+                }
+                
+                self.guessingWord = [RESTfulAPIManager sharedInstance].word;
+                NSLog(@"word: %@", self.guessingWord);
+                self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
+                [[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
+            } else {
+                // Try to request the word again
+                [self showGetWordAgainAlertWithTitle:@"Oops..." message:@"There occurs an error when receiving a word. Would you like to "];
+            }
+        });
+    });
 }
 
-- (void)quitToMenu
-{
-    HMWelcomeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMWelcomeViewController"];
-    [self presentViewController:vc animated:YES completion:nil];
-}
-
-- (void)showGiveMeAWordAlertWithTitle:(NSString *)title message:(NSString *)message
+- (void)showGetWordAgainAlertWithTitle:(NSString *)title message:(NSString *)message
 {
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
                                                           message:message
                                                          delegate:self
-                                                cancelButtonTitle:@"quit to the menu"
+                                                cancelButtonTitle:@"quit game"
                                                 otherButtonTitles:@"try again", nil];
     
+    alertView.tag = kGetWord;
     [alertView drawAlertView];
     [alertView show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0) {
-        NSLog(@"click restart");
-        [self quitToMenu];
-    } else if (buttonIndex == 1) {
-        NSLog(@"click try agin");
-        [self giveMeAWord];
+    if (alertView.tag == kGetWord) {
+        if (buttonIndex == 0) {
+            NSLog(@"click restart");
+            [self quitToMenu];
+        } else if (buttonIndex == 1) {
+            NSLog(@"click try agin");
+            [self getWordAndScore];
+        }
+    } else if (alertView.tag == kGuessWord) {
+        if (buttonIndex == 0) {
+            NSLog(@"click restart");
+            [self quitToMenu];
+        }
     }
+}
+
+- (void)quitToMenu
+{
+    HMWelcomeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMWelcomeViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark Keyboard actions
@@ -211,11 +244,27 @@
             [self updateGuessingStats];
             
             if ([self calculateChanceRemaining] == 0) {
-                [self giveMeAWord];
+                [self getWordAndScore];
             }
             self.guessingWord = [RESTfulAPIManager sharedInstance].word;
+        } else {
+            // Guess the word again
+            [self showGuessWordAgainAlertWithTitle:@"Oops..." message:@"There occurs an error when guessing the word. Would you like to "];
         }
     }];
+}
+
+- (void)showGuessWordAgainAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:self
+                                                cancelButtonTitle:@"quit game"
+                                                otherButtonTitles:@"guess again", nil];
+    
+    alertView.tag = kGuessWord;
+    [alertView drawAlertView];
+    [alertView show];
 }
 
 #pragma Game stats

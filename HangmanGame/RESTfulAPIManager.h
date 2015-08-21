@@ -17,18 +17,23 @@
 @property NSUInteger numberOfGuessAllowedForEachWord;
 @property NSUInteger totalWordCount;
 @property NSUInteger wrongGuessCountOfCurrentWord;
+@property NSUInteger correctWordCount;
+@property NSUInteger totalWrongGuessCount;
 @property NSInteger score;
 
 + (RESTfulAPIManager *)sharedInstance;
 
 - (void)startGameWithPlayerId:(NSString *)idString
-            completionHandler:(void (^)(NSString *message, NSError *error)) handler;
+            completionHandler:(void (^)(NSString *message, NSError *error))handler;
 
 - (void)requestWordWithSessionId:(NSString *)sessionId
-              completionHandler:(void (^)(BOOL success, NSError *error)) handler;
+              completionHandler:(void (^)(BOOL success, NSError *error))handler;
 
 - (void)guessWordWithSessionId:(NSString *)sessionId
                 guessingLetter:(NSString *)letter
-             completionHandler:(void (^)(BOOL success, NSError *error)) handler;
+             completionHandler:(void (^)(BOOL success, NSError *error))handler;
+
+- (void)getResultWithSessionId:(NSString *)sessionId
+             completionHandler:(void (^)(BOOL success, NSError *error))handler;
 
 @end

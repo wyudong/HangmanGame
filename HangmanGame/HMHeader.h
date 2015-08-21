@@ -18,6 +18,10 @@ extern NSString *const kNumberOfGuessAllowedForEachWord;
 extern NSString *const kWord;
 extern NSString *const kTotalWordCount;
 extern NSString *const kWrongGuessCountOfCurrentWord;
+extern NSString *const kCorrectWordCount;
+extern NSString *const kTotalWrongGuessCount;
 extern NSString *const kScore;
+extern NSInteger const kGetWord;
+extern NSInteger const kGuessWord;
 
 @end
