@@ -26,4 +26,8 @@
 - (void)requestWordWithSessionId:(NSString *)sessionId
               completionHandler:(void (^)(BOOL success, NSError *error)) handler;
 
+- (void)guessWordWithSessionId:(NSString *)sessionId
+                guessingLetter:(NSString *)letter
+             completionHandler:(void (^)(BOOL success, NSError *error)) handler;
+
 @end

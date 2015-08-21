@@ -149,22 +149,13 @@
 				BF3C05721B836E8C0059AAD7 /* AppDelegate.m */,
 				BFCE78D81B84D5AE00F0675E /* HMHeader.h */,
 				BFCE78D91B84D5AE00F0675E /* HMHeader.m */,
-				BF964CB01B8423C200124756 /* FUIButton+HMButton.h */,
-				BF964CB11B8423C200124756 /* FUIButton+HMButton.m */,
-				BF964CB31B84484C00124756 /* FUITextField+HMTextField.h */,
-				BF964CB41B84484C00124756 /* FUITextField+HMTextField.m */,
-				BFCE78DE1B86BEB100F0675E /* FUIAlertView+HMAlertView.h */,
-				BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */,
-				BFCE78CA1B84AC7900F0675E /* MBProgressHUD.h */,
-				BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */,
-				BFCE78DB1B85B15700F0675E /* HMProgressHUD.h */,
-				BFCE78DC1B85B15700F0675E /* HMProgressHUD.m */,
 				BF964CB61B846F1300124756 /* RESTfulAPIManager.h */,
 				BF964CB71B846F1300124756 /* RESTfulAPIManager.m */,
 				BF3C05741B836E8C0059AAD7 /* HMWelcomeViewController.h */,
 				BF3C05751B836E8C0059AAD7 /* HMWelcomeViewController.m */,
 				BFCE78D31B84CB2200F0675E /* HMGuessViewController.h */,
 				BFCE78D41B84CB2200F0675E /* HMGuessViewController.m */,
+				BFCE78E11B86D02C00F0675E /* View */,
 				BF3C05771B836E8C0059AAD7 /* Main.storyboard */,
 				BF3C057A1B836E8C0059AAD7 /* Images.xcassets */,
 				BF3C057C1B836E8C0059AAD7 /* LaunchScreen.xib */,
@@ -197,6 +188,23 @@
 				BF3C05881B836E8D0059AAD7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFCE78E11B86D02C00F0675E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BF964CB01B8423C200124756 /* FUIButton+HMButton.h */,
+				BF964CB11B8423C200124756 /* FUIButton+HMButton.m */,
+				BF964CB31B84484C00124756 /* FUITextField+HMTextField.h */,
+				BF964CB41B84484C00124756 /* FUITextField+HMTextField.m */,
+				BFCE78DE1B86BEB100F0675E /* FUIAlertView+HMAlertView.h */,
+				BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */,
+				BFCE78CA1B84AC7900F0675E /* MBProgressHUD.h */,
+				BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */,
+				BFCE78DB1B85B15700F0675E /* HMProgressHUD.h */,
+				BFCE78DC1B85B15700F0675E /* HMProgressHUD.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -44,11 +44,12 @@
     
     // Headers
     NSString *type = @"application/json";
-    NSString *action = @"POST";
+    NSString *method = @"POST";
     
     // Request body
+    NSString *action = @"startGame";
     NSError *bodyError = nil;
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:idString, @"playerId", @"startGame", @"action", nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:idString, @"playerId", action, @"action", nil];
     NSData *body = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&bodyError];
     NSString *requestString = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
     NSLog(@"request body: %@", requestString);
@@ -60,7 +61,7 @@
     [request setValue:type forHTTPHeaderField:@"Content-Type"];
     
     //Request option setup
-    [request setHTTPMethod:action];
+    [request setHTTPMethod:method];
     [request setHTTPBody:body];
     [request setTimeoutInterval:10.0];
     
@@ -108,11 +109,12 @@
     
     // Headers
     NSString *type = @"application/json";
-    NSString *action = @"POST";
+    NSString *method = @"POST";
     
     // Request body
+    NSString *action = @"nextWord";
     NSError *bodyError = nil;
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:sessionId, @"sessionId", @"nextWord", @"action", nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:sessionId, @"sessionId", action, @"action", nil];
     NSData *body = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&bodyError];
     NSString *requestString = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
     NSLog(@"request body: %@", requestString);
@@ -124,7 +126,7 @@
     [request setValue:type forHTTPHeaderField:@"Content-Type"];
     
     //Request option setup
-    [request setHTTPMethod:action];
+    [request setHTTPMethod:method];
     [request setHTTPBody:body];
     [request setTimeoutInterval:10.0];
     
@@ -160,5 +162,71 @@
         }
     }];
 }
+
+- (void)guessWordWithSessionId:(NSString *)sessionId
+                guessingLetter:(NSString *)letter
+             completionHandler:(void (^)(BOOL, NSError *))handler
+{
+    // URL
+    NSString *urlString = URL_HOST;
+    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    //NSLog(@"url: %@", url);
+    
+    // Headers
+    NSString *type = @"application/json";
+    NSString *method = @"POST";
+    
+    // Request body
+    NSString *action = @"guessWord";
+    NSError *bodyError = nil;
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:sessionId, @"sessionId", action, @"action", letter, @"guess", nil];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&bodyError];
+    NSString *requestString = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
+    NSLog(@"request body: %@", requestString);
+    
+    //Request init
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    //Request header setup
+    [request setValue:type forHTTPHeaderField:@"Content-Type"];
+    
+    //Request option setup
+    [request setHTTPMethod:method];
+    [request setHTTPBody:body];
+    [request setTimeoutInterval:10.0];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (data) {
+            NSError *parseError;
+            NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+            NSLog(@"json: %@", jsonDictionary);
+            
+            if ([jsonDictionary isKindOfClass:[NSDictionary class]]) {
+                self.sessionId = [jsonDictionary objectForKey:kSessionId];
+                NSDictionary *dataDictionary = [jsonDictionary objectForKey:kData];
+                self.word = [dataDictionary objectForKey:kWord];
+                self.totalWordCount = [[dataDictionary objectForKey:kTotalWordCount] integerValue];
+                self.wrongGuessCountOfCurrentWord = [[dataDictionary objectForKey:kWrongGuessCountOfCurrentWord] integerValue];
+                
+                if (handler) {
+                    if ([self.sessionId isEqualToString:sessionId]) {
+                        handler(YES, NULL);
+                    } else {
+                        handler(NO, NULL);
+                    }
+                }
+            } else if (handler) {
+                handler(NO, parseError);
+            }
+        } else {
+            if (handler) {
+                handler(NO, connectionError);
+            }
+        }
+    }];
+}
+
 
 @end
