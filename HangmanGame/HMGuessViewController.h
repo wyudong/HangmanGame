@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FUIAlertView.h"
 
-@interface HMGuessViewController : UIViewController
+@interface HMGuessViewController : UIViewController <FUIAlertViewDelegate>
 
 @end

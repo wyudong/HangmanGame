@@ -81,7 +81,7 @@
         } else if ([message isEqualToString:@"Player does not exist"]){
             [self showStartGameAlertWithTitle:@"Oops!" message:@"Please check your ID and try again."];
         } else {
-            [self showStartGameAlertWithTitle:@"Oops!" message:@"There occurs an error when starting the game. Please Try again later."];
+            [self showStartGameAlertWithTitle:@"Oops..." message:@"There occurs an error when starting the game. Please check your connection and try again later."];
         }
     }];
 }
@@ -90,7 +90,8 @@
 {
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
                                                           message:message
-                                                         delegate:nil cancelButtonTitle:@"OK"
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
                                                 otherButtonTitles:nil];
     
     [alertView drawAlertView];

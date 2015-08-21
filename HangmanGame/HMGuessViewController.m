@@ -14,6 +14,7 @@
 #import "FUITextField+HMTextField.h"
 #import "FUIAlertView+HMAlertView.h"
 #import "HMProgressHUD.h"
+#import "HMWelcomeViewController.h"
 
 @interface HMGuessViewController ()
 
@@ -71,9 +72,9 @@
     NSLog(@"sessionId: %@", sessionId);
     [[RESTfulAPIManager sharedInstance] requestWordWithSessionId:sessionId
                                                completionHandler:^(BOOL success, NSError *error) {
-        if (success) {
-            [HMProgressHUD hideProgressHUD:self.view];
+        [HMProgressHUD hideProgressHUD:self.view];
             
+        if (success) {
             self.guessingWord = [RESTfulAPIManager sharedInstance].word;
             self.guessingWordLabel.backgroundColor = [UIColor whiteColor];
             NSLog(@"word: %@", self.guessingWord);
@@ -82,9 +83,38 @@
             [[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
         } else {
             // Try to request the word again
-            
+            [self showGiveMeAWordAlertWithTitle:@"Oops..." message:@"There occurs an error when receiving a word. Would you like to "];
         }
     }];
+}
+
+- (void)showGiveMeAWordAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:self
+                                                cancelButtonTitle:@"quit to the menu"
+                                                otherButtonTitles:@"try again", nil];
+    
+    [alertView drawAlertView];
+    [alertView show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSLog(@"click restart");
+        [self quitToMenu];
+    } else if (buttonIndex == 1) {
+        NSLog(@"click try agin");
+        [self giveMeAWord];
+    }
+}
+
+- (void)quitToMenu
+{
+    HMWelcomeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMWelcomeViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark Guess word
