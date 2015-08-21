@@ -12,6 +12,7 @@
 #import "RESTfulAPIManager.h"
 #import "FUIButton+HMButton.h"
 #import "FUITextField+HMTextField.h"
+#import "FUIAlertView+HMAlertView.h"
 #import "HMProgressHUD.h"
 
 @interface HMGuessViewController ()
@@ -27,6 +28,8 @@
 
 @implementation HMGuessViewController
 
+#pragma mark Initialize
+
 - (void)setGuessingWord:(NSString *)guessingWord
 {
     _guessingWord = guessingWord;
@@ -38,6 +41,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorFromHexCode:@"FFF8F2"];
+    
+    //
     self.wordMarginLabel.layer.zPosition = -1.0;
     self.wordMarginLabel.backgroundColor = [UIColor whiteColor];
     self.wordMarginLabel.clipsToBounds = YES;
@@ -51,6 +56,8 @@
     
     [self giveMeAWord];
 }
+
+# pragma mark Get word
 
 - (void)giveMeAWord
 {
@@ -74,10 +81,13 @@
             self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
             [[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
         } else {
-#warning request word error
+            // Try to request the word again
+            
         }
     }];
 }
+
+#pragma mark Guess word
 
 - (IBAction)touchKeyboardButton:(id)sender
 {

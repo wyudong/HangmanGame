@@ -26,6 +26,7 @@
 		BFCE78D51B84CB2200F0675E /* HMGuessViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D41B84CB2200F0675E /* HMGuessViewController.m */; };
 		BFCE78DA1B84D5AE00F0675E /* HMHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D91B84D5AE00F0675E /* HMHeader.m */; };
 		BFCE78DD1B85B15700F0675E /* HMProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78DC1B85B15700F0675E /* HMProgressHUD.m */; };
+		BFCE78E01B86BEB100F0675E /* FUIAlertView+HMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		BFCE78D91B84D5AE00F0675E /* HMHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHeader.m; sourceTree = "<group>"; };
 		BFCE78DB1B85B15700F0675E /* HMProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMProgressHUD.h; sourceTree = "<group>"; };
 		BFCE78DC1B85B15700F0675E /* HMProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProgressHUD.m; sourceTree = "<group>"; };
+		BFCE78DE1B86BEB100F0675E /* FUIAlertView+HMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FUIAlertView+HMAlertView.h"; sourceTree = "<group>"; };
+		BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUIAlertView+HMAlertView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 				BF964CB11B8423C200124756 /* FUIButton+HMButton.m */,
 				BF964CB31B84484C00124756 /* FUITextField+HMTextField.h */,
 				BF964CB41B84484C00124756 /* FUITextField+HMTextField.m */,
+				BFCE78DE1B86BEB100F0675E /* FUIAlertView+HMAlertView.h */,
+				BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */,
 				BFCE78CA1B84AC7900F0675E /* MBProgressHUD.h */,
 				BFCE78CB1B84AC7900F0675E /* MBProgressHUD.m */,
 				BFCE78DB1B85B15700F0675E /* HMProgressHUD.h */,
@@ -336,6 +341,7 @@
 				BF964CB51B84484C00124756 /* FUITextField+HMTextField.m in Sources */,
 				BFCE78DD1B85B15700F0675E /* HMProgressHUD.m in Sources */,
 				BFCE78DA1B84D5AE00F0675E /* HMHeader.m in Sources */,
+				BFCE78E01B86BEB100F0675E /* FUIAlertView+HMAlertView.m in Sources */,
 				BF964CB21B8423C200124756 /* FUIButton+HMButton.m in Sources */,
 				BFCE78D51B84CB2200F0675E /* HMGuessViewController.m in Sources */,
 				BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */,
