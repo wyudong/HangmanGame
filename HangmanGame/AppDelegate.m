@@ -19,7 +19,7 @@
     // Override point for customization after application launch.
     
     // Default NSUserDefaults
-    NSDictionary* defaults = @{ kSessionId:@" ", kPlayerId:@" ", kTotalWordCount:@0, kNumberOfWordsToGuess:@0, kNumberOfGuessAllowedForEachWord:@0, kWrongGuessCountOfCurrentWord:@0, kScore:@0, kWord:@" "};
+    NSDictionary* defaults = @{ kSessionId:@" ", kPlayerId:@" ", kTotalWordCount:@0, kNumberOfWordsToGuess:@0, kNumberOfGuessAllowedForEachWord:@0, kWrongGuessCountOfCurrentWord:@0, kScore:@0, kWord:@" " };
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
     // Preload keyboard to prevent lag when debugging

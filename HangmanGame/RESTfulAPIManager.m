@@ -294,7 +294,7 @@
 - (void)submitResultWithSessionId:(NSString *)sessionId
                 completionHandler:(void (^)(BOOL, NSError *))handler
 {
-        // URL
+    // URL
     NSString *urlString = URL_HOST;
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     

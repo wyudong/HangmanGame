@@ -79,6 +79,7 @@
             // Show next scene
             HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
             [self presentViewController:vc animated:YES completion:nil];
+            
         } else if ([message isEqualToString:@"Missing player id"]) {
             [self showStartGameAlertWithTitle:@"Oops!" message:@"Please fill your ID first."];
         } else if ([message isEqualToString:@"Player does not exist"]){
@@ -121,6 +122,7 @@
         // Show next scene
         HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
         [self presentViewController:vc animated:YES completion:nil];
+        
     } else if (self.playerIdTextFiled.text.length == 0) {
         [self showContinueGameAlertWithTitle:@"Oops!" message:@"You forgot something important. Maybe the player ID?"];
     } else {

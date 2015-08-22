@@ -24,4 +24,5 @@
 {
     [MBProgressHUD hideHUDForView:view animated:YES];
 }
+
 @end

@@ -25,6 +25,6 @@ NSString *const kScore = @"score";
 NSInteger const kGetWord = 1;
 NSInteger const kGuessWord = 2;
 NSInteger const kQuitGame = 3;
-NSInteger const kSubmitResult = 4;
+NSInteger const kSubmitSuccess = 4;
 
 @end

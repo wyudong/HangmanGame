@@ -25,6 +25,6 @@ extern NSString *const kScore;
 extern NSInteger const kGetWord;
 extern NSInteger const kGuessWord;
 extern NSInteger const kQuitGame;
-extern NSInteger const kSubmitResult;
+extern NSInteger const kSubmitSuccess;
 
 @end

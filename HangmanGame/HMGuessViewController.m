@@ -16,7 +16,6 @@
 #import "FUITextField+HMTextField.h"
 #import "FUIAlertView+HMAlertView.h"
 #import "HMProgressHUD.h"
-#import "NSString+Icons.h"
 #import "HMWelcomeViewController.h"
 
 @interface HMGuessViewController ()
@@ -83,6 +82,7 @@
     
     self.view.backgroundColor = [UIColor colorFromHexCode:@"FFF8F2"];
     
+    // Labels
     self.totalWordCountLabel.font = [UIFont flatFontOfSize:16];
     self.totalWordCountLabel.textColor = [UIColor turquoiseColor];
     self.chanceRemainingLabel.font = [UIFont flatFontOfSize:16];
@@ -105,7 +105,7 @@
         [button drawButtonWithTypeKeyboard];
     }
 
-    // Load from disk
+    // Load data from disk
     [self loadGuessingStatsAndScore];
     
     // Start fresh game
@@ -252,13 +252,14 @@
             [self updateGuessingStats];
         
             HMString *word = [[HMString alloc] initWithNSString:self.guessingWord];
+            
             if ([word isAllUncovered]) {        // Achieve the correct answer
-                [self animateCorrectWordLabel:self.guessingWordLabel];
+                [self animateWordLabel:self.guessingWordLabel];
                 [self getWordAndScore];
             } else if ([self calculateChanceRemaining] == 0) {      // Run out of chance
                 [self getWordAndScore];
             }
-            [self animateCorrectWordLabel:self.guessingWordLabel];
+            [self animateWordLabel:self.guessingWordLabel];
         } else {
             [self showGuessWordAgainAlertWithTitle:@"Oops..." message:@"There occurs an error when guessing the word. Would you like to "];
         }
@@ -324,7 +325,9 @@
         
         if (success) {
             NSString *message = [NSString stringWithFormat:@"You guessed %ld out of %ld words correctly. The final score is %ld.", self.correctWordCount, self.totalWordCount, self.score];
-            [self showSubmitResultAlertWithTitle:@"High five!" message:message];
+            [self showSubmitSuccessAlertWithTitle:@"High five!" message:message];
+        } else {
+            [self showSubmitResultFailAlertWithTitle:@"Oops..." message:@"There occurs an error when submitting the result. Please try again later."];
         }
     }];
 
@@ -350,7 +353,7 @@
     [alertView show];
 }
 
-- (void)showSubmitResultAlertWithTitle:(NSString *)title message:(NSString *)message
+- (void)showSubmitSuccessAlertWithTitle:(NSString *)title message:(NSString *)message
 {
     FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
                                                           message:message
@@ -358,7 +361,19 @@
                                                 cancelButtonTitle:@"High five"
                                                 otherButtonTitles:nil];
     
-    alertView.tag = kSubmitResult;
+    alertView.tag = kSubmitSuccess;
+    [alertView drawAlertView];
+    [alertView show];
+}
+
+- (void)showSubmitResultFailAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+    
     [alertView drawAlertView];
     [alertView show];
 }
@@ -369,7 +384,7 @@
 {
     if (alertView.tag == kGetWord) {
         if (buttonIndex == 0) {
-            NSLog(@"click restart");
+            NSLog(@"click quit");
             [self quitToMenu];
         } else if (buttonIndex == 1) {
             NSLog(@"click try agin");
@@ -377,7 +392,7 @@
         }
     } else if (alertView.tag == kGuessWord) {
         if (buttonIndex == 0) {
-            NSLog(@"click restart");
+            NSLog(@"click quit");
             [self quitToMenu];
         }
     } else if (alertView.tag == kQuitGame) {
@@ -389,7 +404,7 @@
             [self resetPlayerId];
             [self quitToMenu];
         }
-    } else if (alertView.tag == kSubmitResult) {
+    } else if (alertView.tag == kSubmitSuccess) {
         if (buttonIndex == 0) {
             NSLog(@"high five");
             [self resetPlayerId];
@@ -411,7 +426,7 @@
 
 #pragma mark Animation
 
-- (void)animateCorrectWordLabel:(UILabel *)label
+- (void)animateWordLabel:(UILabel *)label
 {
     CGFloat offset = 20.0;
     CGFloat duration = 1.0;
