@@ -224,7 +224,7 @@
         
             HMString *word = [[HMString alloc] initWithNSString:self.guessingWord];
             if ([word isAllUncovered]) {        // Achieve the correct answer
-                NSLog(@"correct answer");
+                [self animateCorrectWordLabel:self.guessingWordLabel];
                 [self getWordAndScore];
             } else if ([self calculateChanceRemaining] == 0) {      // Run out of chance
                 [self getWordAndScore];
@@ -292,6 +292,33 @@
 {
     HMWelcomeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMWelcomeViewController"];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+#pragma mark Animation
+
+- (void)animateCorrectWordLabel:(UILabel *)label
+{
+    CGFloat offset = 15.0;
+    CGFloat duration = 1.0;
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [animation setDuration:duration];
+    
+    NSMutableArray *keys = [NSMutableArray arrayWithCapacity:20];
+    int infinitySec = 20;
+    while (offset > 0.01) {
+        [keys addObject:[NSValue valueWithCGPoint:CGPointMake(label.center.x - offset, label.center.y)]];
+        offset /= 2;
+        [keys addObject:[NSValue valueWithCGPoint:CGPointMake(label.center.x + offset, label.center.y)]];
+        offset /= 2;
+        infinitySec--;
+        if (infinitySec <= 0) {
+            break;
+        }
+    }
+    
+    animation.values = keys;
+    [label.layer addAnimation:animation forKey:@"position"];
 }
 
 @end
