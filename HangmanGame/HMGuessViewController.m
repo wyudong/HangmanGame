@@ -76,6 +76,15 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorFromHexCode:@"FFF8F2"];
+    
+    self.totalWordCountLabel.font = [UIFont flatFontOfSize:16];
+    self.totalWordCountLabel.textColor = [UIColor turquoiseColor];
+    self.chanceRemainingLabel.font = [UIFont flatFontOfSize:16];
+    self.chanceRemainingLabel.textColor = [UIColor turquoiseColor];
+    self.scoreLabel.font = [UIFont flatFontOfSize:16];
+    self.scoreLabel.textColor = [UIColor turquoiseColor];
+    self.guessingWordLabel.font = [UIFont boldFlatFontOfSize:24];
+    self.guessingWordLabel.textColor = [UIColor midnightBlueColor];
     self.guessingWordLabel.backgroundColor = [UIColor whiteColor];
     
     // Margin around guessing word

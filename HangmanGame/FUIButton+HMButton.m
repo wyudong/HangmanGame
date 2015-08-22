@@ -28,7 +28,7 @@
     self.shadowColor = [UIColor silverColor];
     self.shadowHeight = 3.0f;
     self.cornerRadius = 6.0f;
-    self.titleLabel.font = [UIFont boldFlatFontOfSize:16];
+    self.titleLabel.font = [UIFont boldFlatFontOfSize:18];
     
     [self setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateNormal];
     [self setTitleColor:[UIColor wetAsphaltColor] forState:UIControlStateHighlighted];

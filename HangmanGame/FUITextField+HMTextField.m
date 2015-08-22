@@ -16,6 +16,7 @@
     self.backgroundColor = [UIColor clearColor];
     self.edgeInsets = UIEdgeInsetsMake(4.0f, 15.0f, 4.0f, 15.0f);
     self.textFieldColor = [UIColor whiteColor];
+    self.textColor = [UIColor midnightBlueColor];
     self.borderColor = [UIColor turquoiseColor];
     self.borderWidth = 2.0f;
     self.cornerRadius = 3.0f;
