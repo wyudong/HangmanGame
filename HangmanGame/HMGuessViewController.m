@@ -10,6 +10,7 @@
 #import "HMGuessViewController.h"
 #import "HMHeader.h"
 #import "RESTfulAPIManager.h"
+#import "HMGameManager.h"
 #import "HMString.h"
 #import "FUIButton+HMButton.h"
 #import "FUITextField+HMTextField.h"
@@ -51,24 +52,27 @@
 - (void)setTotalWordCount:(NSUInteger)totalWordCount
 {
     _totalWordCount = totalWordCount;
-    self.totalWordCountLabel.text = [NSString stringWithFormat:@"WORD %ld/%ld" ,self.totalWordCount, [RESTfulAPIManager sharedInstance].numberOfWordsToGuess];
+    self.totalWordCountLabel.text = [NSString stringWithFormat:@"WORD %ld/%ld" ,(unsigned long)self.totalWordCount, (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:kNumberOfWordsToGuess]];
 }
 
 - (void)setChanceRemaining:(NSUInteger)chanceRemaining
 {
     _chanceRemaining = chanceRemaining;
-    self.chanceRemainingLabel.text = [NSString stringWithFormat:@"CHANCE %ld", self.chanceRemaining];
+    self.chanceRemainingLabel.text = [NSString stringWithFormat:@"CHANCE %ld", (unsigned long)self.chanceRemaining];
 }
 
 - (void)setScore:(NSInteger)score
 {
     _score = score;
-    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE %ld", self.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE %ld", (long)self.score];
 }
 
 - (NSInteger)calculateChanceRemaining
 {
-    return [RESTfulAPIManager sharedInstance].numberOfGuessAllowedForEachWord - [RESTfulAPIManager sharedInstance].wrongGuessCountOfCurrentWord;
+    NSUInteger numberOfGuessAllowedForEachWord = [[NSUserDefaults standardUserDefaults] integerForKey:kNumberOfGuessAllowedForEachWord];
+    NSUInteger wrongGuessCountOfCurrentWord = [[NSUserDefaults standardUserDefaults] integerForKey:kWrongGuessCountOfCurrentWord];
+
+    return numberOfGuessAllowedForEachWord - wrongGuessCountOfCurrentWord;
 }
 
 - (void)viewDidLoad
@@ -98,8 +102,13 @@
     for (FUIButton *button in self.keyboardButtons) {
         [button drawButtonWithTypeKeyboard];
     }
+
+    // Load from disk
+    [self loadGuessingStatsAndScore];
     
-    [self getWordAndScore];
+    if ([HMGameManager sharedInstance].isContinued == NO) {
+        [self getWordAndScore];
+    }
 }
 
 # pragma mark Get ready for guessing
@@ -109,7 +118,6 @@
     [self showGetReadyProgress];
     
     NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:kSessionId];
-    NSLog(@"guessing view controller sessionId: %@", sessionId);
     
     // Two queues for requesting word and score
     dispatch_group_t group = dispatch_group_create();
@@ -135,10 +143,15 @@
             [HMProgressHUD hideProgressHUD:self.view];
             
             if (self.didGetAWord) {
+                [self saveWord];
+                [self saveWrongGuessCountOfCurrentWord];
+                [self saveTotalWordCount];
                 [self updateDisplayingWord];
                 [self updateGuessingStats];
+                
                 if (self.didGetScore) {
                     [self updateScore];
+                    [self saveScore];
                 }
             } else {
                 [self showGetWordAgainAlertWithTitle:@"Oops..." message:@"There occurs an error when receiving a word. Would you like to "];
@@ -150,8 +163,9 @@
 - (void)showGetReadyProgress
 {
     NSUInteger round = [[NSUserDefaults standardUserDefaults] integerForKey:kTotalWordCount];
+    
     if ([self calculateChanceRemaining] == 0) {
-        [HMProgressHUD showProgressHUDWithMessage:@"Try harder next time" view:self.view];
+        [HMProgressHUD showProgressHUDWithMessage:@"Try harder next time!" view:self.view];
     } else if (round == 0) {
         [HMProgressHUD showProgressHUDWithMessage:@"Your first word is..." view:self.view];
     } else {
@@ -177,15 +191,15 @@
 - (IBAction)touchKeyboardButton:(id)sender
 {
     NSUInteger index = [self.keyboardButtons indexOfObject:sender];
-    
     FUIButton *buttonToFreeze = (FUIButton *)sender;
     NSString *chosenLetter = buttonToFreeze.titleLabel.text;
     
     // Submit chosen letter
     if ([chosenLetter isEqualToString:@"√"] && self.letterReadyForGuess) {
-        [self meltButton:buttonToFreeze];
+        [self freezeButton:buttonToFreeze];
         [self meltButton:[self.keyboardButtons objectAtIndex:self.buttonToMeltIndex]];
         [self guess:self.letterReadyForGuess];
+        self.buttonToMeltIndex = index;
     } else {
         if (self.buttonToMeltIndex >= 0) {
             [self meltButton:[self.keyboardButtons objectAtIndex:self.buttonToMeltIndex]];
@@ -228,6 +242,9 @@
         [HMProgressHUD hideProgressHUD:self.view];
                                                 
         if (success) {
+            [self saveWord];
+            [self saveWrongGuessCountOfCurrentWord];
+            [self saveTotalWordCount];
             [self updateDisplayingWord];
             [self updateGuessingStats];
         
@@ -238,6 +255,7 @@
             } else if ([self calculateChanceRemaining] == 0) {      // Run out of chance
                 [self getWordAndScore];
             }
+            [self animateCorrectWordLabel:self.guessingWordLabel];
         } else {
             [self showGuessWordAgainAlertWithTitle:@"Oops..." message:@"There occurs an error when guessing the word. Would you like to "];
         }
@@ -259,16 +277,26 @@
 
 #pragma mark Game stats
 
+- (void)loadGuessingStatsAndScore
+{
+    self.totalWordCount = [[NSUserDefaults standardUserDefaults] integerForKey:kTotalWordCount];
+    self.chanceRemaining = [self calculateChanceRemaining];
+    self.score = [[NSUserDefaults standardUserDefaults] integerForKey:kScore];
+    
+    NSString *savedWord = [[NSUserDefaults standardUserDefaults] objectForKey:kWord];
+    HMString *word = [[HMString alloc] initWithNSString:savedWord];
+    NSString *displayingWord = [word convertToDisplayingFormat];
+    self.guessingWordLabel.text = displayingWord;
+}
+
 - (void)updateDisplayingWord
 {
     self.guessingWord = [RESTfulAPIManager sharedInstance].word;
-    NSLog(@"word: %@", self.guessingWord);
 }
 
 - (void)updateGuessingStats
 {
     self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
-    [[NSUserDefaults standardUserDefaults] setInteger:self.totalWordCount forKey:kTotalWordCount];
     self.chanceRemaining = [self calculateChanceRemaining];
 }
 
@@ -307,19 +335,19 @@
 
 - (void)animateCorrectWordLabel:(UILabel *)label
 {
-    CGFloat offset = 15.0;
+    CGFloat offset = 20.0;
     CGFloat duration = 1.0;
     
     CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [animation setDuration:duration];
     
     NSMutableArray *keys = [NSMutableArray arrayWithCapacity:20];
-    int infinitySec = 20;
+    int infinitySec = 10;
     while (offset > 0.01) {
         [keys addObject:[NSValue valueWithCGPoint:CGPointMake(label.center.x - offset, label.center.y)]];
-        offset /= 2;
+        offset /= 2.0;
         [keys addObject:[NSValue valueWithCGPoint:CGPointMake(label.center.x + offset, label.center.y)]];
-        offset /= 2;
+        offset /= 2.0;
         infinitySec--;
         if (infinitySec <= 0) {
             break;
@@ -328,6 +356,29 @@
     
     animation.values = keys;
     [label.layer addAnimation:animation forKey:@"position"];
+}
+
+#pragma mark Save data to disk
+
+- (void)saveTotalWordCount
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:[RESTfulAPIManager sharedInstance].totalWordCount forKey:kTotalWordCount];
+}
+
+- (void)saveWrongGuessCountOfCurrentWord
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:[RESTfulAPIManager sharedInstance].wrongGuessCountOfCurrentWord forKey:kWrongGuessCountOfCurrentWord];
+    NSLog(@"wrong guess: %lu", [[NSUserDefaults standardUserDefaults] integerForKey:kWrongGuessCountOfCurrentWord]);
+}
+
+- (void)saveScore
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:[RESTfulAPIManager sharedInstance].score forKey:kScore];
+}
+
+- (void)saveWord
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[RESTfulAPIManager sharedInstance].word forKey:kWord];
 }
 
 @end

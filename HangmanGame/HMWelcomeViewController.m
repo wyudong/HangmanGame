@@ -9,6 +9,7 @@
 #import "HMWelcomeViewController.h"
 #import "HMHeader.h"
 #import "RESTfulAPIManager.h"
+#import "HMGameManager.h"
 #import "FUIButton+HMButton.h"
 #import "FUITextField+HMTextField.h"
 #import "FUIAlertView+HMAlertView.h"
@@ -69,9 +70,10 @@
                                                 
         // Show alert
         if ([message isEqualToString:@"THE GAME IS ON"]) {
-            // Save current session id
-            NSLog(@"sessionId: %@", [RESTfulAPIManager sharedInstance].sessionId);
-            [[NSUserDefaults standardUserDefaults] setObject:[RESTfulAPIManager sharedInstance].sessionId forKey:kSessionId];
+            [HMGameManager sharedInstance].isContinued = NO;
+            [self saveSessionId];
+            [self saveNumberOfWordsToGuess];
+            [self saveNumberOfGuessAllowedForEachWord];
             
             // Show next scene
             HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
@@ -110,7 +112,11 @@
 
 - (void)continueGame
 {
+    [HMGameManager sharedInstance].isContinued = YES;
     
+    // Show next scene
+    HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark Hide keyboard
@@ -126,9 +132,26 @@
     return YES;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
+}
+
+#pragma mark Save data to disk
+
+- (void)saveSessionId
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[RESTfulAPIManager sharedInstance].sessionId forKey:kSessionId];
+}
+
+- (void)saveNumberOfWordsToGuess
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:[RESTfulAPIManager sharedInstance].numberOfWordsToGuess forKey:kNumberOfWordsToGuess];
+}
+
+- (void)saveNumberOfGuessAllowedForEachWord
+{
+    [[NSUserDefaults standardUserDefaults] setInteger:[RESTfulAPIManager sharedInstance].numberOfGuessAllowedForEachWord forKey:kNumberOfGuessAllowedForEachWord];
 }
 
 @end

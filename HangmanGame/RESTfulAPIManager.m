@@ -25,22 +25,27 @@
     return sharedInstance;
 }
 
+#pragma mark Request
+
 - (void)resetUserDefaults
 {
-    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:kSessionId];
+    [[NSUserDefaults standardUserDefaults] setObject:@" " forKey:kSessionId];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kTotalWordCount];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kNumberOfWordsToGuess];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kNumberOfGuessAllowedForEachWord];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kWrongGuessCountOfCurrentWord];
+    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kScore];
+    [[NSUserDefaults standardUserDefaults] setObject:@" " forKey:kWord];
 }
 
 - (void)startGameWithPlayerId:(NSString *)idString
             completionHandler:(void (^)(NSString *, NSError *))handler
 {
-    // Reset game save data
     [self resetUserDefaults];
     
     // URL
     NSString *urlString = URL_HOST;
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    //NSLog(@"url: %@", url);
     
     // Headers
     NSString *type = @"application/json";
@@ -79,12 +84,7 @@
                 NSDictionary *dataDictionary = [jsonDictionary objectForKey:kData];
                 self.numberOfWordsToGuess = [[dataDictionary objectForKey:kNumberOfWordsToGuess] integerValue];
                 self.numberOfGuessAllowedForEachWord = [[dataDictionary objectForKey:kNumberOfGuessAllowedForEachWord] integerValue];
-                
-//                NSLog(@"message: %@",self. message);
-//                NSLog(@"sessionId: %@", self.sessionId);
-//                NSLog(@"numberOfWordsToGuess: %lu",self. numberOfWordsToGuess);
-//                NSLog(@"numberOfGuessAllowedForEachWord: %lu", self.numberOfGuessAllowedForEachWord);
-                
+
                 if (handler) {
                     handler(self.message, NULL);
                 }
@@ -105,7 +105,6 @@
     // URL
     NSString *urlString = URL_HOST;
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    //NSLog(@"url: %@", url);
     
     // Headers
     NSString *type = @"application/json";
@@ -144,7 +143,7 @@
                 self.word = [dataDictionary objectForKey:kWord];
                 self.totalWordCount = [[dataDictionary objectForKey:kTotalWordCount] integerValue];
                 self.wrongGuessCountOfCurrentWord = [[dataDictionary objectForKey:kWrongGuessCountOfCurrentWord] integerValue];
-                
+        
                 if (handler) {
                     if ([self.sessionId isEqualToString:sessionId]) {
                         handler(YES, NULL);
@@ -170,7 +169,6 @@
     // URL
     NSString *urlString = URL_HOST;
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    //NSLog(@"url: %@", url);
     
     // Headers
     NSString *type = @"application/json";
@@ -209,7 +207,7 @@
                 self.word = [dataDictionary objectForKey:kWord];
                 self.totalWordCount = [[dataDictionary objectForKey:kTotalWordCount] integerValue];
                 self.wrongGuessCountOfCurrentWord = [[dataDictionary objectForKey:kWrongGuessCountOfCurrentWord] integerValue];
-                
+ 
                 if (handler) {
                     if ([self.sessionId isEqualToString:sessionId]) {
                         handler(YES, NULL);
@@ -234,7 +232,6 @@
     // URL
     NSString *urlString = URL_HOST;
     NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    //NSLog(@"url: %@", url);
     
     // Headers
     NSString *type = @"application/json";
@@ -274,7 +271,7 @@
                 self.correctWordCount = [[dataDictionary objectForKey:kCorrectWordCount] integerValue];
                 self.totalWrongGuessCount = [[dataDictionary objectForKey:kTotalWrongGuessCount] integerValue];
                 self.score = [[dataDictionary objectForKey:kScore] integerValue];
-                
+ 
                 if (handler) {
                     if ([self.sessionId isEqualToString:sessionId]) {
                         handler(YES, NULL);

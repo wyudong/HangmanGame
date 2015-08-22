@@ -19,8 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    NSDictionary* defaults = @{ kSessionId:@"", kTotalWordCount:@0 };
+    NSDictionary* defaults = @{ kSessionId:@" ", kTotalWordCount:@0, kNumberOfWordsToGuess:@0, kNumberOfGuessAllowedForEachWord:@0, kWrongGuessCountOfCurrentWord:@0, kScore:@0, kWord:@" "};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    
+    sleep(1);
     
     return YES;
 }

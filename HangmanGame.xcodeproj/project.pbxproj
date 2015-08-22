@@ -28,6 +28,7 @@
 		BFCE78DD1B85B15700F0675E /* HMProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78DC1B85B15700F0675E /* HMProgressHUD.m */; };
 		BFCE78E01B86BEB100F0675E /* FUIAlertView+HMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */; };
 		BFCE78E41B87824A00F0675E /* HMString.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78E31B87824A00F0675E /* HMString.m */; };
+		BFCE78E71B88958500F0675E /* HMGameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78E61B88958500F0675E /* HMGameManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUIAlertView+HMAlertView.m"; sourceTree = "<group>"; };
 		BFCE78E21B87824A00F0675E /* HMString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMString.h; sourceTree = "<group>"; };
 		BFCE78E31B87824A00F0675E /* HMString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMString.m; sourceTree = "<group>"; };
+		BFCE78E51B88958500F0675E /* HMGameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGameManager.h; sourceTree = "<group>"; };
+		BFCE78E61B88958500F0675E /* HMGameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGameManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 				BFCE78D91B84D5AE00F0675E /* HMHeader.m */,
 				BF964CB61B846F1300124756 /* RESTfulAPIManager.h */,
 				BF964CB71B846F1300124756 /* RESTfulAPIManager.m */,
+				BFCE78E51B88958500F0675E /* HMGameManager.h */,
+				BFCE78E61B88958500F0675E /* HMGameManager.m */,
 				BFCE78E21B87824A00F0675E /* HMString.h */,
 				BFCE78E31B87824A00F0675E /* HMString.m */,
 				BF3C05741B836E8C0059AAD7 /* HMWelcomeViewController.h */,
@@ -359,6 +364,7 @@
 				BF964CB21B8423C200124756 /* FUIButton+HMButton.m in Sources */,
 				BFCE78D51B84CB2200F0675E /* HMGuessViewController.m in Sources */,
 				BFCE78CC1B84AC7900F0675E /* MBProgressHUD.m in Sources */,
+				BFCE78E71B88958500F0675E /* HMGameManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,7 +495,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -502,7 +508,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
