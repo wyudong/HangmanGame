@@ -27,6 +27,7 @@
 		BFCE78DA1B84D5AE00F0675E /* HMHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78D91B84D5AE00F0675E /* HMHeader.m */; };
 		BFCE78DD1B85B15700F0675E /* HMProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78DC1B85B15700F0675E /* HMProgressHUD.m */; };
 		BFCE78E01B86BEB100F0675E /* FUIAlertView+HMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */; };
+		BFCE78E41B87824A00F0675E /* HMString.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCE78E31B87824A00F0675E /* HMString.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		BFCE78DC1B85B15700F0675E /* HMProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMProgressHUD.m; sourceTree = "<group>"; };
 		BFCE78DE1B86BEB100F0675E /* FUIAlertView+HMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FUIAlertView+HMAlertView.h"; sourceTree = "<group>"; };
 		BFCE78DF1B86BEB100F0675E /* FUIAlertView+HMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FUIAlertView+HMAlertView.m"; sourceTree = "<group>"; };
+		BFCE78E21B87824A00F0675E /* HMString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMString.h; sourceTree = "<group>"; };
+		BFCE78E31B87824A00F0675E /* HMString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMString.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 				BFCE78D91B84D5AE00F0675E /* HMHeader.m */,
 				BF964CB61B846F1300124756 /* RESTfulAPIManager.h */,
 				BF964CB71B846F1300124756 /* RESTfulAPIManager.m */,
+				BFCE78E21B87824A00F0675E /* HMString.h */,
+				BFCE78E31B87824A00F0675E /* HMString.m */,
 				BF3C05741B836E8C0059AAD7 /* HMWelcomeViewController.h */,
 				BF3C05751B836E8C0059AAD7 /* HMWelcomeViewController.m */,
 				BFCE78D31B84CB2200F0675E /* HMGuessViewController.h */,
@@ -347,6 +352,7 @@
 				BF964CB81B846F1300124756 /* RESTfulAPIManager.m in Sources */,
 				BF3C05701B836E8C0059AAD7 /* main.m in Sources */,
 				BF964CB51B84484C00124756 /* FUITextField+HMTextField.m in Sources */,
+				BFCE78E41B87824A00F0675E /* HMString.m in Sources */,
 				BFCE78DD1B85B15700F0675E /* HMProgressHUD.m in Sources */,
 				BFCE78DA1B84D5AE00F0675E /* HMHeader.m in Sources */,
 				BFCE78E01B86BEB100F0675E /* FUIAlertView+HMAlertView.m in Sources */,
