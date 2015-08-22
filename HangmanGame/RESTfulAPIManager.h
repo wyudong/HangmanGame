@@ -36,4 +36,7 @@
 - (void)getResultWithSessionId:(NSString *)sessionId
              completionHandler:(void (^)(BOOL success, NSError *error))handler;
 
+- (void)submitResultWithSessionId:(NSString *)sessionId
+                completionHandler:(void (^)(BOOL success, NSError *error))handler;
+
 @end

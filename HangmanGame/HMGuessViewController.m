@@ -16,6 +16,7 @@
 #import "FUITextField+HMTextField.h"
 #import "FUIAlertView+HMAlertView.h"
 #import "HMProgressHUD.h"
+#import "NSString+Icons.h"
 #import "HMWelcomeViewController.h"
 
 @interface HMGuessViewController ()
@@ -29,6 +30,7 @@
 @property (strong, nonatomic) NSString *guessingWord;   // from server
 @property (strong, nonatomic) NSString *letterReadyForGuess;
 @property (nonatomic) NSUInteger totalWordCount;
+@property (nonatomic) NSUInteger correctWordCount;
 @property (nonatomic) NSUInteger chanceRemaining;
 @property (nonatomic) NSInteger score;
 @property BOOL didGetAWord;
@@ -52,19 +54,19 @@
 - (void)setTotalWordCount:(NSUInteger)totalWordCount
 {
     _totalWordCount = totalWordCount;
-    self.totalWordCountLabel.text = [NSString stringWithFormat:@"WORD %ld/%ld" ,(unsigned long)self.totalWordCount, (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:kNumberOfWordsToGuess]];
+    self.totalWordCountLabel.text = [NSString stringWithFormat:@"#WORD  %ld/%ld" ,(unsigned long)self.totalWordCount, (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:kNumberOfWordsToGuess]];
 }
 
 - (void)setChanceRemaining:(NSUInteger)chanceRemaining
 {
     _chanceRemaining = chanceRemaining;
-    self.chanceRemainingLabel.text = [NSString stringWithFormat:@"CHANCE %ld", (unsigned long)self.chanceRemaining];
+    self.chanceRemainingLabel.text = [NSString stringWithFormat:@"#CHANCE  %ld", (unsigned long)self.chanceRemaining];
 }
 
 - (void)setScore:(NSInteger)score
 {
     _score = score;
-    self.scoreLabel.text = [NSString stringWithFormat:@"SCORE %ld", (long)self.score];
+    self.scoreLabel.text = [NSString stringWithFormat:@"#SCORE  %ld", (long)self.score];
 }
 
 - (NSInteger)calculateChanceRemaining
@@ -89,11 +91,11 @@
     self.scoreLabel.textColor = [UIColor turquoiseColor];
     self.guessingWordLabel.font = [UIFont boldFlatFontOfSize:24];
     self.guessingWordLabel.textColor = [UIColor midnightBlueColor];
-    self.guessingWordLabel.backgroundColor = [UIColor whiteColor];
+    self.guessingWordLabel.backgroundColor = [UIColor cloudsColor];
     
     // Margin around guessing word
     self.wordMarginLabel.layer.zPosition = -1.0;
-    self.wordMarginLabel.backgroundColor = [UIColor whiteColor];
+    self.wordMarginLabel.backgroundColor = [UIColor cloudsColor];
     self.wordMarginLabel.clipsToBounds = YES;
     self.wordMarginLabel.layer.cornerRadius = 6.0f;
     
@@ -106,6 +108,7 @@
     // Load from disk
     [self loadGuessingStatsAndScore];
     
+    // Start fresh game
     if ([HMGameManager sharedInstance].isContinued == NO) {
         [self getWordAndScore];
     }
@@ -305,6 +308,61 @@
     self.score = [RESTfulAPIManager sharedInstance].score;
 }
 
+#pragma mark Quit game
+
+- (void)submitResult
+{
+    [HMProgressHUD showProgressHUDWithMessage:@"Connecting..." view:self.view];
+    
+    NSString *sessionId = [[NSUserDefaults standardUserDefaults] objectForKey:kSessionId];
+    [[RESTfulAPIManager sharedInstance]submitResultWithSessionId:sessionId completionHandler:^(BOOL success, NSError *error) {
+        [HMProgressHUD hideProgressHUD:self.view];
+        
+        self.totalWordCount = [RESTfulAPIManager sharedInstance].totalWordCount;
+        self.correctWordCount = [RESTfulAPIManager sharedInstance].correctWordCount;
+        self.score = [RESTfulAPIManager sharedInstance].score;
+        
+        if (success) {
+            NSString *message = [NSString stringWithFormat:@"You guessed %ld out of %ld words correctly. The final score is %ld.", self.correctWordCount, self.totalWordCount, self.score];
+            [self showSubmitResultAlertWithTitle:@"High five!" message:message];
+        }
+    }];
+
+}
+
+- (IBAction)touchPowerOffButton:(id)sender
+{
+    NSLog(@"click power off");
+    
+    [self showQuitGameAlertWithTitle:@"Yo" message:@"Are you going to"];
+}
+
+- (void)showQuitGameAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:self
+                                                cancelButtonTitle:@"just test this button"
+                                                otherButtonTitles:@"submit result", @"restart game", nil];
+    
+    alertView.tag = kQuitGame;
+    [alertView drawAlertView];
+    [alertView show];
+}
+
+- (void)showSubmitResultAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:self
+                                                cancelButtonTitle:@"High five"
+                                                otherButtonTitles:nil];
+    
+    alertView.tag = kSubmitResult;
+    [alertView drawAlertView];
+    [alertView show];
+}
+
 #pragma mark Alert view buttons
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
@@ -322,6 +380,21 @@
             NSLog(@"click restart");
             [self quitToMenu];
         }
+    } else if (alertView.tag == kQuitGame) {
+        if (buttonIndex == 1) {
+            NSLog(@"click submit result");
+            [self submitResult];
+        } else if (buttonIndex == 2) {
+            NSLog(@"click restart");
+            [self resetPlayerId];
+            [self quitToMenu];
+        }
+    } else if (alertView.tag == kSubmitResult) {
+        if (buttonIndex == 0) {
+            NSLog(@"high five");
+            [self resetPlayerId];
+            [self quitToMenu];
+        }
     }
 }
 
@@ -329,6 +402,11 @@
 {
     HMWelcomeViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMWelcomeViewController"];
     [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)resetPlayerId
+{
+    [[NSUserDefaults standardUserDefaults] setObject:@" " forKey:kPlayerId];
 }
 
 #pragma mark Animation

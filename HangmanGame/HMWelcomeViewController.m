@@ -122,9 +122,9 @@
         HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
         [self presentViewController:vc animated:YES completion:nil];
     } else if (self.playerIdTextFiled.text.length == 0) {
-        [self showContinueGameAlertWithTitle:@"Oops!" message:@"You forgot something important. Maybe you left the cell phone... or the player ID?"];
+        [self showContinueGameAlertWithTitle:@"Oops!" message:@"You forgot something important. Maybe the player ID?"];
     } else {
-        [self showContinueGameAlertWithTitle:@"Hi again!" message:@"The player ID you entered seems not cool enough. Would you like to get a playerID from the Strikingly staff?"];
+        [self showContinueGameAlertWithTitle:@"Oops!" message:@"The player ID you entered doesn't look cool enough. Would you like to get a playerID from the Strikingly staff?"];
     }
 }
 

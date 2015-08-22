@@ -291,4 +291,68 @@
     }];    
 }
 
+- (void)submitResultWithSessionId:(NSString *)sessionId
+                completionHandler:(void (^)(BOOL, NSError *))handler
+{
+        // URL
+    NSString *urlString = URL_HOST;
+    NSURL *url = [NSURL URLWithString:[urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    // Headers
+    NSString *type = @"application/json";
+    NSString *method = @"POST";
+    
+    // Request body
+    NSString *action = @"submitResult";
+    NSError *bodyError = nil;
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:sessionId, @"sessionId", action, @"action", nil];
+    NSData *body = [NSJSONSerialization dataWithJSONObject:dictionary options:0 error:&bodyError];
+    NSString *requestString = [[NSString alloc] initWithData:body encoding:NSUTF8StringEncoding];
+    NSLog(@"request body: %@", requestString);
+    
+    //Request init
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    //Request header setup
+    [request setValue:type forHTTPHeaderField:@"Content-Type"];
+    
+    //Request option setup
+    [request setHTTPMethod:method];
+    [request setHTTPBody:body];
+    [request setTimeoutInterval:10.0];
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if (data) {
+            NSError *parseError;
+            NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:&parseError];
+            NSLog(@"json: %@", jsonDictionary);
+            
+            if ([jsonDictionary isKindOfClass:[NSDictionary class]]) {
+                self.sessionId = [jsonDictionary objectForKey:kSessionId];
+                NSDictionary *dataDictionary = [jsonDictionary objectForKey:kData];
+                self.totalWordCount = [[dataDictionary objectForKey:kTotalWordCount] integerValue];
+                self.correctWordCount = [[dataDictionary objectForKey:kCorrectWordCount] integerValue];
+                self.totalWrongGuessCount = [[dataDictionary objectForKey:kTotalWrongGuessCount] integerValue];
+                self.score = [[dataDictionary objectForKey:kScore] integerValue];
+ 
+                if (handler) {
+                    if ([self.sessionId isEqualToString:sessionId]) {
+                        handler(YES, NULL);
+                    } else {
+                        handler(NO, NULL);
+                    }
+                }
+            } else if (handler) {
+                handler(NO, parseError);
+            }
+        } else {
+            if (handler) {
+                handler(NO, connectionError);
+            }
+        }
+    }];
+}
+
 @end
