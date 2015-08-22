@@ -15,14 +15,19 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // Default NSUserDefaults
     NSDictionary* defaults = @{ kSessionId:@" ", kPlayerId:@" ", kTotalWordCount:@0, kNumberOfWordsToGuess:@0, kNumberOfGuessAllowedForEachWord:@0, kWrongGuessCountOfCurrentWord:@0, kScore:@0, kWord:@" "};
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
     
-    sleep(1);
+    // Preload keyboard to prevent lag when debugging
+    UITextField *textField = [[UITextField alloc] init];
+    [self.window addSubview:textField];
+    [textField becomeFirstResponder];
+    [textField resignFirstResponder];
+    [textField removeFromSuperview];
     
     return YES;
 }
