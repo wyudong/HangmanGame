@@ -30,6 +30,7 @@
 - (void)resetUserDefaults
 {
     [[NSUserDefaults standardUserDefaults] setObject:@" " forKey:kSessionId];
+    [[NSUserDefaults standardUserDefaults] setObject:@" " forKey:kPlayerId];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kTotalWordCount];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kNumberOfWordsToGuess];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kNumberOfGuessAllowedForEachWord];

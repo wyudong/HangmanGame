@@ -11,6 +11,7 @@
 @implementation HMHeader
 
 NSString *const kSessionId = @"sessionId";
+NSString *const kPlayerId = @"playerId";
 NSString *const kMessage = @"message";
 NSString *const kData = @"data";
 NSString *const kNumberOfWordsToGuess = @"numberOfWordsToGuess";

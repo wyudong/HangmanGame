@@ -381,4 +381,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:[RESTfulAPIManager sharedInstance].word forKey:kWord];
 }
 
+#pragma mark UI
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
 @end

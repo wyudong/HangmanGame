@@ -72,6 +72,7 @@
         if ([message isEqualToString:@"THE GAME IS ON"]) {
             [HMGameManager sharedInstance].isContinued = NO;
             [self saveSessionId];
+            [self savePlayerId];
             [self saveNumberOfWordsToGuess];
             [self saveNumberOfGuessAllowedForEachWord];
             
@@ -112,11 +113,31 @@
 
 - (void)continueGame
 {
-    [HMGameManager sharedInstance].isContinued = YES;
+    NSString *savedPlayerId = [[NSUserDefaults standardUserDefaults] objectForKey:kPlayerId];
     
-    // Show next scene
-    HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
-    [self presentViewController:vc animated:YES completion:nil];
+    if ([self.playerIdTextFiled.text isEqualToString:savedPlayerId]) {
+        [HMGameManager sharedInstance].isContinued = YES;
+        
+        // Show next scene
+        HMGuessViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"HMGuessViewController"];
+        [self presentViewController:vc animated:YES completion:nil];
+    } else if (self.playerIdTextFiled.text.length == 0) {
+        [self showContinueGameAlertWithTitle:@"Oops!" message:@"You forgot something important. Maybe you left the cell phone... or the player ID?"];
+    } else {
+        [self showContinueGameAlertWithTitle:@"Hi again!" message:@"The player ID you entered seems not cool enough. Would you like to get a playerID from the Strikingly staff?"];
+    }
+}
+
+- (void)showContinueGameAlertWithTitle:(NSString *)title message:(NSString *)message
+{
+    FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:title
+                                                          message:message
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+    
+    [alertView drawAlertView];
+    [alertView show];
 }
 
 #pragma mark Hide keyboard
@@ -144,6 +165,11 @@
     [[NSUserDefaults standardUserDefaults] setObject:[RESTfulAPIManager sharedInstance].sessionId forKey:kSessionId];
 }
 
+- (void)savePlayerId
+{
+    [[NSUserDefaults standardUserDefaults] setObject:self.playerIdTextFiled.text forKey:kPlayerId];
+}
+
 - (void)saveNumberOfWordsToGuess
 {
     [[NSUserDefaults standardUserDefaults] setInteger:[RESTfulAPIManager sharedInstance].numberOfWordsToGuess forKey:kNumberOfWordsToGuess];
@@ -152,6 +178,13 @@
 - (void)saveNumberOfGuessAllowedForEachWord
 {
     [[NSUserDefaults standardUserDefaults] setInteger:[RESTfulAPIManager sharedInstance].numberOfGuessAllowedForEachWord forKey:kNumberOfGuessAllowedForEachWord];
+}
+
+#pragma mark UI
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
 }
 
 @end

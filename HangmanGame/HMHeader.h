@@ -11,6 +11,7 @@
 @interface HMHeader : NSObject
 
 extern NSString *const kSessionId;
+extern NSString *const kPlayerId;
 extern NSString *const kMessage;
 extern NSString *const kData;
 extern NSString *const kNumberOfWordsToGuess;
