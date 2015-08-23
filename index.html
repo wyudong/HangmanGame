@@ -73,16 +73,16 @@
 <h3>
 <a id="http-request" class="anchor" href="#http-request" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP request</h3>
 
-<p>Before the task, I have never written code to request data via HTTP. The only library I used to deal with the network when developing iOS App is <a href="https://leancloud.cn/">LeanCloud</a>. However, I just know a little about LeanCloud's APIs, not anything in lower level.</p>
+<p>Before the task, I have never written code to request data via HTTP. The only library I used to deal with the network when developing iOS App is <a href="https://leancloud.cn/">LeanCloud</a>. However, I just know some basic APIs, nothing more in lower level.</p>
 
-<p>So the first thing I do is to learn what is RESTful web service and how to send and receive JSON package. I read an <a href="http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069?pgno=1">article</a> and manage to send request using both the terminal and an Chrome extension named <a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo/reviews?hl=en-US&amp;utm_source=ARC">Advanced REST client</a>. An hour later, I finally understand the whole game flow and the HTTP request and response that I need to finish the game.</p>
+<p>So the first thing I do is to learn what RESTful web service is and how to send and receive JSON package. I read an <a href="http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069?pgno=1">article</a> and manage to send request using both the terminal and an Chrome extension named <a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo/reviews?hl=en-US&amp;utm_source=ARC">Advanced REST client</a>. An hour later, I finally understand the whole game flow and the HTTP request and response that I need to finish the game.</p>
 
 <h3>
 <a id="customized-keyboard" class="anchor" href="#customized-keyboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customized keyboard</h3>
 
-<p>I want to impress people when playing my game and the default keyboard of iOS looks dull and some keys are redundant for guessing a word. So I decide to design a customized keyboard.</p>
+<p>I want to impress people when playing my game but the default keyboard of iOS which looks dull doesn't meet my requirement, and some keys are redundant for guessing a word. So I decide to design a customized keyboard.</p>
 
-<p>I really have little time to learn <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/Keyboard.html">Custom Keyboard of App Extension</a> provided by Apple, so the dirty method I come up with is to simulate a keyboard with tons of <code>UIButton</code>. Another thing to make me headache is how to auto layout theses buttons. At last, I make it works and it could be worse :)</p>
+<p>I really have little time to learn <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/Keyboard.html">Custom Keyboard of App Extension</a> provided by Apple, so the dirty method I come up with is to simulate a keyboard with tons of <code>UIButton</code>. Another thing pissed me off is how to auto layout theses buttons. At last, I make it works and it could be worse :)</p>
 
 <p><img src="https://cloud.githubusercontent.com/assets/5687273/9426908/f1b108fc-4990-11e5-9ac4-ccfa134e6e60.png" alt=""></p>
 
@@ -92,14 +92,16 @@
 <ul>
 <li>
 <blockquote>
-<p>Can I play the game without a player ID or what if I continue the game with a different player ID?</p>
+<p>Can I play the game without a player ID? </p>
+
+<p>What if I continue the game with a different player ID?</p>
 </blockquote>
 
-<p>The answer is NO. And I have also prepared some nice tips for handling the player's uncommon behaviour and the server error. Find more funny tips as you find my bugs.</p>
+<p>The answer is NO. And I have also prepared some nice tips for handling these kinds of uncommon behaviour and server error. Find more funny tips as you find the bugs.</p>
 </li>
 <li><p>Every time you make a guess, the word will shake its body to cheer you up!</p></li>
-<li><p>The keyboard, obviously the one in the second view. Not cool enough?</p></li>
-<li><p>The App name: H_ngm_n. Wait, is it an English word?</p></li>
+<li><p>The keyboard, obviously the one in the second view.</p></li>
+<li><p>The App name: <strong>H_ngm_n</strong>. Wait, is it an English word?</p></li>
 <li><p>Simple but elegant UI with the help of <a href="https://github.com/Grouper/FlatUIKit">FlatUIKit</a>.</p></li>
 </ul>
 
