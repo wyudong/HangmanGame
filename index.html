@@ -38,13 +38,13 @@
 <li><p><code>HMGameMangaer</code> has jut one shared instance telling the program if player wants to start a new game or continue the last saved game.</p></li>
 </ul>
 
-<h2>
-<a id="view" class="anchor" href="#view" aria-hidden="true"><span class="octicon octicon-link"></span></a>View</h2>
+<h3>
+<a id="view" class="anchor" href="#view" aria-hidden="true"><span class="octicon octicon-link"></span></a>View</h3>
 
-<p>I define my category or subclass of <a href="https://github.com/Grouper/FlatUIKit">FlatUIKit</a> and <a href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a> to customise my UI components, such as labels, buttons, text field and progress HUD.</p>
+<p>I define my category or subclass of <a href="https://github.com/Grouper/FlatUIKit">FlatUIKit</a> and <a href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a> to customize my UI components, such as labels, buttons, text field and progress HUD.</p>
 
-<h2>
-<a id="controller" class="anchor" href="#controller" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controller</h2>
+<h3>
+<a id="controller" class="anchor" href="#controller" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controller</h3>
 
 <ul>
 <li>
@@ -60,22 +60,36 @@
 <p>HMGuessViewController is for guessing the word and getting the result.</p>
 
 <ul>
-<li>Submit your guessing word with the customised keyboard.</li>
-<li>Check the progress of your guess and some other stats.</li>
+<li>Submit your guessing letter with the customized keyboard.</li>
+<li>Check the progress of your guess and some other stats after every guess.</li>
 <li>Quit the game or submit you score.</li>
 </ul>
 </li>
 </ul>
 
 <h2>
-<a id="difficulties-i-encountered-and-how-do-i-resolve-them" class="anchor" href="#difficulties-i-encountered-and-how-do-i-resolve-them" aria-hidden="true"><span class="octicon octicon-link"></span></a>Difficulties I encountered and how do I resolve them</h2>
+<a id="difficulties-that-i-encountered-and-how-do-i-resolve-them" class="anchor" href="#difficulties-that-i-encountered-and-how-do-i-resolve-them" aria-hidden="true"><span class="octicon octicon-link"></span></a>Difficulties that I encountered and how do I resolve them</h2>
+
+<h3>
+<a id="http-request" class="anchor" href="#http-request" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTTP request</h3>
+
+<p>Before the task, I haven't never write program to request data via HTTP. The only library I used to deal with the network when developing iOS App is <a href="https://leancloud.cn/">LeanCloud</a>. However, I just know a little about LeanCloud's APIs, not anything in lower level.</p>
+
+<p>So the first thing I do is to learn what is RESTful web service and how to send request and receive JSON package. I read an <a href="http://www.drdobbs.com/web-development/restful-web-services-a-tutorial/240169069?pgno=1">article</a> and try to send request using both the terminal and an Chrome extension named <a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo/reviews?hl=en-US&amp;utm_source=ARC">ApplicationAdvanced REST client</a>. An hour later, I finally understand the whole game flow and the HTTP request and response.</p>
+
+<h3>
+<a id="customized-keyboard" class="anchor" href="#customized-keyboard" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customized keyboard</h3>
+
+<p>I want to impress people when playing my game and the default keyboard of iOS looks dull and some keys are redundant for guessing a word. So I decide to design a customized keyboard.</p>
+
+<p>I really have little time to learn <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/Keyboard.html">Custom Keyboard of App Extension</a> provided by Apple, so the dirty method is to simulate a keyboard with tons of <code>UIButton</code>. Another thing to make me headache is how to auto layout theses buttons. At last, I make it works and it could be worse :)</p>
 
 <h2>
 <a id="highlights" class="anchor" href="#highlights" aria-hidden="true"><span class="octicon octicon-link"></span></a>Highlights</h2>
 
 <ul>
-<li><p>Can I play the game without a player ID or what if I want to contiue the game with a different playID? The answer is NO. But I have prepared some nice tips for you in those cases. Find more funny tips like you find my bugs.</p></li>
-<li><p>Every time you make a guess, and after get the response from the server, the word will shake its body to cheer you up. It is better to show different animations when guessing correctly and wrongly, but I have little time to do it.</p></li>
+<li><p>Can I play the game without a player ID or what if I want to continue the game with a different playID? The answer is NO. But I have prepared some nice tips for you in those cases. Find more funny tips like you find my bugs.</p></li>
+<li><p>Every time you make a guess, the word will shake its body to cheer you up.</p></li>
 <li><p>The keyboard, obviously the one in the guess view. Not cool enough?</p></li>
 <li><p>The App name: H_ngm_n. Wait, is it an English word?</p></li>
 <li><p>Simple but elegant UI with the help of <a href="https://github.com/Grouper/FlatUIKit">FlatUIKit</a>.</p></li>
