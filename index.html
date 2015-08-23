@@ -32,13 +32,54 @@
 <h3>
 <a id="model" class="anchor" href="#model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model</h3>
 
-<p>The model <code>RESTfulAPIManager</code> interacts with the HTTP connection and implements all the given APIs in 5  Objective-C methods with completion handlers. Another model <code>HMString</code> is a subclass of <code>NSString</code>, which reads each character of a word and replace it with other characters. And <code>HMGameMangaer</code> has jut one shared instance telling the program if player wants to start a new game or continue the last saved game.</p>
+<ul>
+<li><p><code>RESTfulAPIManager</code> interacts with the HTTP connection and implements all the given APIs in five Objective-C methods with completion handlers.</p></li>
+<li><p><code>HMString</code> is a subclass of <code>NSString</code>, which reads each character of a word and replace it with other characters.</p></li>
+<li><p><code>HMGameMangaer</code> has jut one shared instance telling the program if player wants to start a new game or continue the last saved game.</p></li>
+</ul>
+
+<h2>
+<a id="view" class="anchor" href="#view" aria-hidden="true"><span class="octicon octicon-link"></span></a>View</h2>
+
+<p>I define my category or subclass of <a href="https://github.com/Grouper/FlatUIKit">FlatUIKit</a> and <a href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a> to customise my UI components, such as labels, buttons, text field and progress HUD.</p>
+
+<h2>
+<a id="controller" class="anchor" href="#controller" aria-hidden="true"><span class="octicon octicon-link"></span></a>Controller</h2>
+
+<ul>
+<li>
+<p>HMWelcomeViewController has three parts.</p>
+
+<ul>
+<li>Enter your player ID in the text field.</li>
+<li>Touch <strong>NEW GAMGE</strong> button to start a new game, and this will clear all the saved data.</li>
+<li>Touch <strong>CONTINUE</strong> button to continue your last game.</li>
+</ul>
+</li>
+<li>
+<p>HMGuessViewController is for guessing the word and getting the result.</p>
+
+<ul>
+<li>Submit your guessing word with the customised keyboard.</li>
+<li>Check the progress of your guess and some other stats.</li>
+<li>Quit the game or submit you score.</li>
+</ul>
+</li>
+</ul>
+
+<h2>
+<a id="difficulties-i-encountered-and-how-do-i-resolve-them" class="anchor" href="#difficulties-i-encountered-and-how-do-i-resolve-them" aria-hidden="true"><span class="octicon octicon-link"></span></a>Difficulties I encountered and how do I resolve them</h2>
 
 <h2>
 <a id="highlights" class="anchor" href="#highlights" aria-hidden="true"><span class="octicon octicon-link"></span></a>Highlights</h2>
 
-<h2>
-<a id="difficulties-i-encountered-and-how-do-i-resolve-them" class="anchor" href="#difficulties-i-encountered-and-how-do-i-resolve-them" aria-hidden="true"><span class="octicon octicon-link"></span></a>Difficulties I encountered and how do I resolve them</h2>
+<ul>
+<li><p>Can I play the game without a player ID or what if I want to contiue the game with a different playID? The answer is NO. But I have prepared some nice tips for you in those cases. Find more funny tips like you find my bugs.</p></li>
+<li><p>Every time you make a guess, and after get the response from the server, the word will shake its body to cheer you up. It is better to show different animations when guessing correctly and wrongly, but I have little time to do it.</p></li>
+<li><p>The keyboard, obviously the one in the guess view. Not cool enough?</p></li>
+<li><p>The App name: H_ngm_n. Wait, is it an English word?</p></li>
+<li><p>Simple but elegant UI with the help of <a href="https://github.com/Grouper/FlatUIKit">FlatUIKit</a>.</p></li>
+</ul>
 
 <h2>
 <a id="big-thanks" class="anchor" href="#big-thanks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Big thanks</h2>
