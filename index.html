@@ -35,7 +35,7 @@
 <ul>
 <li><p><code>RESTfulAPIManager</code> interacts with the HTTP connection and implements all the given APIs in five Objective-C methods with completion handlers.</p></li>
 <li><p><code>HMString</code> is a subclass of <code>NSString</code>, which reads each character of a word and replaces it with other characters.</p></li>
-<li><p><code>HMGameMangaer</code> has just one shared instance telling the program whether player wants to start a new game or continue the last saved game.</p></li>
+<li><p><code>HMGameMangaer</code> has just one shared instance telling the program whether the player wants to start a new game or continue the last saved game.</p></li>
 </ul>
 
 <h3>
@@ -84,6 +84,8 @@
 
 <p>I really have little time to learn <a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/Keyboard.html">Custom Keyboard of App Extension</a> provided by Apple, so the dirty method I come up with is to simulate a keyboard with tons of <code>UIButton</code>. Another thing to make me headache is how to auto layout theses buttons. At last, I make it works and it could be worse :)</p>
 
+<p><img src="http://wyudong.com/wp-content/uploads/2015/08/KeyboardAutoLayout.png" alt="image"></p>
+
 <h2>
 <a id="highlights" class="anchor" href="#highlights" aria-hidden="true"><span class="octicon octicon-link"></span></a>Highlights</h2>
 
@@ -93,7 +95,7 @@
 <p>Can I play the game without a player ID or what if I continue the game with a different player ID?</p>
 </blockquote>
 
-<p>The answer is NO. But I have prepared some nice tips for you in those cases. Find more funny tips as you find my bugs.</p>
+<p>The answer is NO. And I have also prepared some nice tips for handling the player's uncommon behaviour and the server error. Find more funny tips as you find my bugs.</p>
 </li>
 <li><p>Every time you make a guess, the word will shake its body to cheer you up!</p></li>
 <li><p>The keyboard, obviously the one in the second view. Not cool enough?</p></li>
