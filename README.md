@@ -62,6 +62,20 @@ I really have little time to learn [Custom Keyboard of App Extension](https://de
 
 - Simple but elegant UI with the help of [FlatUIKit](https://github.com/Grouper/FlatUIKit).
 
+## Screenshots
+
+![](https://cloud.githubusercontent.com/assets/5687273/9704667/40bd83b6-54e1-11e5-92a4-f5d5b8e3d2cd.png)
+*Welcome*
+
+![](https://cloud.githubusercontent.com/assets/5687273/9704669/515ded8c-54e1-11e5-80ae-390123855144.png)
+*Noob entering ID*
+
+![](https://cloud.githubusercontent.com/assets/5687273/9704670/6982bfc8-54e1-11e5-9f91-3a94a5da08cb.gif)
+*Shake it*
+
+![](https://cloud.githubusercontent.com/assets/5687273/9704675/9be902ec-54e1-11e5-8bc5-04620703135d.png)
+*Noob testing button*
+
 ## Big thanks
 
 Thank you very much for giving me such a special interview opportunity. I will never forget the intense but meaningful development time lasted 4 days. Hope you enjoy my work as I do. For more fun, please try another iOS game made by me, [7 Light Year](https://itunes.apple.com/us/app/7-light-year/id1025658330?mt=8).
