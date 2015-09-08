@@ -78,6 +78,9 @@ I really have little time to learn [Custom Keyboard of App Extension](https://de
 ![](https://cloud.githubusercontent.com/assets/5687273/9704675/9be902ec-54e1-11e5-8bc5-04620703135d.png)
 *Noob testing button*
 
+![](https://cloud.githubusercontent.com/assets/5687273/9727397/392c76f6-5631-11e5-952d-788219bcfafc.png)
+*Yay!*
+
 ## Big thanks
 
 Thank you very much for giving me such a special interview opportunity. I will never forget the intense but meaningful development time lasted 4 days. Hope you enjoy my work as I do. For more fun, please try another iOS game made by me, [7 Light Year](https://itunes.apple.com/us/app/7-light-year/id1025658330?mt=8).
