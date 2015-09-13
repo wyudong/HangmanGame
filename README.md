@@ -2,7 +2,7 @@
 
 Welcome to this page for introducing and archiving my Strikingly interview project: a word-guessing game on iOS.
 
-**NOTE:** you need a valid player ID to start the game. Find the ID below and wish it not to be outdated.
+**IMPORTANT NOTE:** you need a valid player ID for starting the game. The ID can be found below, but I'm not sure whether it might get expired someday.
 
 ## Walkthrough
 
