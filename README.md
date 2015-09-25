@@ -1,6 +1,6 @@
 # HangmanGame
 
-Welcome to this page for introducing and archiving my Strikingly interview project: a word-guessing game on iOS.
+Welcome to this page for introducing and archiving my [Strikingly interview project](https://github.com/strikingly/strikingly-interview-test-instructions): a word-guessing game on iOS.
 
 **IMPORTANT NOTE:** you need a valid player ID for starting the game. The ID can be found below, but I'm not sure whether it might get expired someday.
 
