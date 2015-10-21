@@ -66,20 +66,25 @@ I really have little time to learn [Custom Keyboard of App Extension](https://de
 
 ## Screenshots
 
+### Welcome
+
 ![](https://cloud.githubusercontent.com/assets/5687273/9717017/b7aaf1be-55a1-11e5-8352-d7dc23eaf5c0.png)
-*Welcome*
+
+### Noob entering ID
 
 ![](https://cloud.githubusercontent.com/assets/5687273/9704669/515ded8c-54e1-11e5-80ae-390123855144.png)
-*Noob entering ID*
+
+### Shake it
 
 ![](https://cloud.githubusercontent.com/assets/5687273/9704670/6982bfc8-54e1-11e5-9f91-3a94a5da08cb.gif)
-*Shake it*
+
+### Noob testing button
 
 ![](https://cloud.githubusercontent.com/assets/5687273/9704675/9be902ec-54e1-11e5-8bc5-04620703135d.png)
-*Noob testing button*
+
+### Yay!
 
 ![](https://cloud.githubusercontent.com/assets/5687273/9727397/392c76f6-5631-11e5-952d-788219bcfafc.png)
-*Yay!*
 
 ## Big thanks
 
